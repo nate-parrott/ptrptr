@@ -16,6 +16,8 @@ struct Shapes {
         switch type {
         case "path":
             view = renderPath(shape, existingView: view, ctx: ctx)
+        case "text":
+            view = renderText(shape, existingView: view, ctx: ctx)
         default:
             view = renderBase(shape, existingView: existingView, ctx: ctx)
         }
@@ -37,9 +39,11 @@ struct Shapes {
     }
     
     static func renderPath(shape: Shape, existingView: ShapeView?, ctx: ShapesView.RenderContext) -> ShapeView {
-        let view = (existingView as? PathShapeView) ?? PathShapeView()
+        var view = (existingView as? PathShapeView) ?? PathShapeView()
+        view = renderBase(shape, existingView: view, ctx: ctx) as! PathShapeView
+        
         let path = shape["path"] as? [CGFloat] ?? []
-        view.setPathAndCenter(path, inCoordinateSpace: ctx.coordinateSpace)
+        view.setPathAndFrame(path, inCoordinateSpace: ctx.coordinateSpace)
         
         var strokeColor: CGColorRef?
         var strokeWidth: CGFloat = 0
@@ -62,7 +66,25 @@ struct Shapes {
         view.shapeLayer.lineWidth = strokeWidth
         view.shapeLayer.strokeColor = strokeColor
         
-        return renderBase(shape, existingView: view, ctx: ctx)
+        return view
+    }
+    
+    static func renderText(shape: Shape, existingView: ShapeView?, ctx: ShapesView.RenderContext) -> ShapeView {
+        var view = (existingView as? TextShapeView) ?? TextShapeView()
+        view = renderBase(shape, existingView: view, ctx: ctx) as! TextShapeView
+        
+        let text = shape["text"] as? String ?? ""
+        var color = UIColor.redColor()
+        if let colorArray = shape["color"] as? [CGFloat] {
+            color = ctx.colorFunc(colorArray)
+        }
+        
+        let attributed = NSAttributedString(string: text, attributes: [NSForegroundColorAttributeName: color])
+        let w = shape["width"] as? CGFloat ?? 200
+        let h = shape["height"] as? CGFloat ?? 100
+        view.content = (attributed, CGSizeMake(w, h))
+        
+        return view
     }
     
     static func convertShapeDictToArray(shapes: [String: Shape]) -> [(String, Shape)] {

@@ -12,6 +12,8 @@
 		5F1582051C48DB08009CC42E /* CGMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582041C48DB08009CC42E /* CGMath.swift */; };
 		5F1582071C48F681009CC42E /* PathShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582061C48F681009CC42E /* PathShapeView.swift */; };
 		5F1582091C48F9E0009CC42E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582081C48F9E0009CC42E /* Colors.swift */; };
+		5F15820B1C49A02F009CC42E /* TextShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F15820A1C49A02F009CC42E /* TextShapeView.swift */; };
+		5F15820F1C49A3E6009CC42E /* NSAttributedString+ResizeToFit.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F15820E1C49A3E6009CC42E /* NSAttributedString+ResizeToFit.m */; };
 		5F80016C1C474F1E00183BA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F80016B1C474F1E00183BA4 /* AppDelegate.swift */; };
 		5F80016E1C474F1E00183BA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F80016D1C474F1E00183BA4 /* ViewController.swift */; };
 		5F8001711C474F1E00183BA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F80016F1C474F1E00183BA4 /* Main.storyboard */; };
@@ -33,6 +35,10 @@
 		5F1582041C48DB08009CC42E /* CGMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGMath.swift; sourceTree = "<group>"; };
 		5F1582061C48F681009CC42E /* PathShapeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathShapeView.swift; sourceTree = "<group>"; };
 		5F1582081C48F9E0009CC42E /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		5F15820A1C49A02F009CC42E /* TextShapeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextShapeView.swift; sourceTree = "<group>"; };
+		5F15820C1C49A3E5009CC42E /* ptrptr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ptrptr-Bridging-Header.h"; sourceTree = "<group>"; };
+		5F15820D1C49A3E6009CC42E /* NSAttributedString+ResizeToFit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+ResizeToFit.h"; sourceTree = "<group>"; };
+		5F15820E1C49A3E6009CC42E /* NSAttributedString+ResizeToFit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+ResizeToFit.m"; sourceTree = "<group>"; };
 		5F8001681C474F1E00183BA4 /* ptrptr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ptrptr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F80016B1C474F1E00183BA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F80016D1C474F1E00183BA4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +77,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5F1582101C49A3E9009CC42E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5F1582041C48DB08009CC42E /* CGMath.swift */,
+				5F15820D1C49A3E6009CC42E /* NSAttributedString+ResizeToFit.h */,
+				5F15820E1C49A3E6009CC42E /* NSAttributedString+ResizeToFit.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		5F80015F1C474F1E00183BA4 = {
 			isa = PBXGroup;
 			children = (
@@ -99,16 +115,18 @@
 				5F8001831C47574200183BA4 /* CanvasViewController.swift */,
 				5F80017D1C4756EC00183BA4 /* CanvasView.swift */,
 				5F1582021C48D735009CC42E /* ShapesView.swift */,
-				5F1582041C48DB08009CC42E /* CGMath.swift */,
 				5F1582001C48CF18009CC42E /* Shapes.swift */,
 				5F1582081C48F9E0009CC42E /* Colors.swift */,
 				5F8001871C47579D00183BA4 /* ShapeView.swift */,
 				5F1582061C48F681009CC42E /* PathShapeView.swift */,
+				5F15820A1C49A02F009CC42E /* TextShapeView.swift */,
 				5F8001851C47576200183BA4 /* FeedViewController.swift */,
+				5F1582101C49A3E9009CC42E /* Utils */,
 				5F80016F1C474F1E00183BA4 /* Main.storyboard */,
 				5F8001721C474F1E00183BA4 /* Assets.xcassets */,
 				5F8001741C474F1E00183BA4 /* LaunchScreen.storyboard */,
 				5F8001771C474F1E00183BA4 /* Info.plist */,
+				5F15820C1C49A3E5009CC42E /* ptrptr-Bridging-Header.h */,
 			);
 			path = ptrptr;
 			sourceTree = "<group>";
@@ -251,11 +269,13 @@
 				5F80017E1C4756ED00183BA4 /* CanvasView.swift in Sources */,
 				5F8001841C47574200183BA4 /* CanvasViewController.swift in Sources */,
 				5F1582071C48F681009CC42E /* PathShapeView.swift in Sources */,
+				5F15820F1C49A3E6009CC42E /* NSAttributedString+ResizeToFit.m in Sources */,
 				5F1582091C48F9E0009CC42E /* Colors.swift in Sources */,
 				5F80018C1C48A5CA00183BA4 /* API.swift in Sources */,
 				5F1582031C48D735009CC42E /* ShapesView.swift in Sources */,
 				5F1582051C48DB08009CC42E /* CGMath.swift in Sources */,
 				5F8001861C47576200183BA4 /* FeedViewController.swift in Sources */,
+				5F15820B1C49A02F009CC42E /* TextShapeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,10 +389,13 @@
 			baseConfigurationReference = C07CFBD98ACE4A8349238B98 /* Pods-ptrptr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ptrptr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nateparrott.ptrptr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ptrptr/ptrptr-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -381,10 +404,12 @@
 			baseConfigurationReference = 1C9E2177DF9389AAD779D053 /* Pods-ptrptr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ptrptr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nateparrott.ptrptr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ptrptr/ptrptr-Bridging-Header.h";
 			};
 			name = Release;
 		};

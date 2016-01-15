@@ -35,3 +35,11 @@ extension CGRect {
         }
     }
 }
+
+func ==(lhs: CGSize, rhs: CGSize) -> Bool {
+    return lhs.width == rhs.width && lhs.height == rhs.height
+}
+
+func !=(lhs: CGSize, rhs: CGSize) -> Bool {
+    return !(lhs == rhs)
+}

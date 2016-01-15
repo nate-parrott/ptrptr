@@ -19,7 +19,7 @@ class PathShapeView: ShapeView {
         }
     }
     
-    func setPathAndCenter(path: [CGFloat], inCoordinateSpace: ShapesView.CoordinateSpace) {
+    func setPathAndFrame(path: [CGFloat], inCoordinateSpace: ShapesView.CoordinateSpace) {
         // this layer will be scaled automatically to fit the space; we just need to set the correct center position
         let bezier = UIBezierPath()
         for i in 0..<(path.count/2) {
