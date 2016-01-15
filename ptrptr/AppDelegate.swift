@@ -7,16 +7,45 @@
 //
 
 import UIKit
+import Firebase
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        API.Shared.firebaseRoot.observeAuthEventWithBlock { (authData: FAuthData?) -> Void in
+            if authData == nil {
+                let existingLoginDialogOpt = (self.window?.rootViewController as? LoginViewController)
+                let loginWindowAlreadyPresented = (existingLoginDialogOpt != nil)
+                if !loginWindowAlreadyPresented {
+                    // present login VC, but first, dismiss all modals:
+                    while let modal = self.window?.rootViewController?.presentingViewController {
+                        modal.dismissViewControllerAnimated(false, completion: nil)
+                    }
+                    
+                    let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController")
+                    self.window!.rootViewController = loginVC
+                }
+            } else {
+                // we're logged in:
+                let existingFeedOpt = (self.window?.rootViewController as? UINavigationController)?.viewControllers.first as? FeedViewController
+                if existingFeedOpt == nil {
+                    self.window!.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("FeedNav")
+                }
+            }
+        }
+        
         return true
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -36,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
-
+    
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }

@@ -1,0 +1,29 @@
+PODS:
+  - Bolts (1.6.0):
+    - Bolts/AppLinks (= 1.6.0)
+    - Bolts/Tasks (= 1.6.0)
+  - Bolts/AppLinks (1.6.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.6.0)
+  - FBSDKCoreKit (4.9.0):
+    - Bolts (~> 1.5)
+  - FBSDKLoginKit (4.9.0):
+    - FBSDKCoreKit
+  - Firebase (2.5.0)
+  - Parse (1.12.0):
+    - Bolts/Tasks (~> 1.5)
+
+DEPENDENCIES:
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - Firebase
+  - Parse
+
+SPEC CHECKSUMS:
+  Bolts: f52a250053bb517ca874523c3913776359ab3def
+  FBSDKCoreKit: c4f25d27949a6ac80206063804d12ad1c7879612
+  FBSDKLoginKit: d46210c3955d69337c61325327f486ca50a8661f
+  Firebase: 744617c0733b45198f9486ebd5cac64ec2d10d79
+  Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
+
+COCOAPODS: 0.39.0
