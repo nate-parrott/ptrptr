@@ -9,8 +9,8 @@
 				"thumbnail": [0, 0, 150, 150],
 				"feed": [0, 0, 500, 150]
 			},
-			"privileged_drawables": [
-				{
+			"shapes": {
+				"001a": {
 					"type": "text",
 					"text": "HELLO WORLD",
 					"width": 200,
@@ -20,21 +20,21 @@
 					"opacity": 1,
 					"x": 30,
 					"y": 40,
+					"z": 100,
 					"author": {
 						"id": "id123",
 						"name": "Nate Parrott",
 						"color": [1, 0.2, 0.2, 1]
 					},
 					"modified": "1452810876"
-				}
-			],
-			"drawables": [
-				{
+				},
+				"002a": {
 					"type": "path",
 					"path": [0,0,100,100,0,100],
 					"scale": 1,
 					"rotation": 0,
 					"opacity": 1,
+					"z": 4,
 					"author": {
 						"id": "id456",
 						"name": "Thurston Wilson",
@@ -42,11 +42,12 @@
 					},
 					"modified": "1452810876"
 				},
-				{
+				"003a": {
 					"type": "image",
 					"path": [0,0,100,100,0,100],
 					"width": 200,
 					"height": 200,
+					"z": 3,
 					"url": "https://lh6.ggpht.com/2naSwjOw1NIG9XJF46s5Qvgruw7zgnQ3ym7Fez9bYMfWvC4Uw2PjNCCrfacy8Z1R3A=w300",
 					"scale": 1,
 					"rotation": 45,
@@ -58,7 +59,7 @@
 					},
 					"modified": "1452810876"
 				}
-			]
+			}
 		}
 	}
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F1582011C48CF18009CC42E /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582001C48CF18009CC42E /* Shapes.swift */; };
+		5F1582031C48D735009CC42E /* ShapesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582021C48D735009CC42E /* ShapesView.swift */; };
+		5F1582051C48DB08009CC42E /* CGMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582041C48DB08009CC42E /* CGMath.swift */; };
 		5F80016C1C474F1E00183BA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F80016B1C474F1E00183BA4 /* AppDelegate.swift */; };
 		5F80016E1C474F1E00183BA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F80016D1C474F1E00183BA4 /* ViewController.swift */; };
 		5F8001711C474F1E00183BA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F80016F1C474F1E00183BA4 /* Main.storyboard */; };
@@ -23,6 +26,9 @@
 
 /* Begin PBXFileReference section */
 		1C9E2177DF9389AAD779D053 /* Pods-ptrptr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ptrptr.release.xcconfig"; path = "Pods/Target Support Files/Pods-ptrptr/Pods-ptrptr.release.xcconfig"; sourceTree = "<group>"; };
+		5F1582001C48CF18009CC42E /* Shapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
+		5F1582021C48D735009CC42E /* ShapesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapesView.swift; sourceTree = "<group>"; };
+		5F1582041C48DB08009CC42E /* CGMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGMath.swift; sourceTree = "<group>"; };
 		5F8001681C474F1E00183BA4 /* ptrptr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ptrptr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F80016B1C474F1E00183BA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F80016D1C474F1E00183BA4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +93,9 @@
 				5F80018B1C48A5CA00183BA4 /* API.swift */,
 				5F8001891C4759E900183BA4 /* LoginViewController.swift */,
 				5F80017D1C4756EC00183BA4 /* CanvasView.swift */,
+				5F1582021C48D735009CC42E /* ShapesView.swift */,
+				5F1582041C48DB08009CC42E /* CGMath.swift */,
+				5F1582001C48CF18009CC42E /* Shapes.swift */,
 				5F8001871C47579D00183BA4 /* ShapeView.swift */,
 				5F8001831C47574200183BA4 /* CanvasViewController.swift */,
 				5F8001851C47576200183BA4 /* FeedViewController.swift */,
@@ -230,11 +239,14 @@
 			files = (
 				5F80018A1C4759E900183BA4 /* LoginViewController.swift in Sources */,
 				5F8001881C47579D00183BA4 /* ShapeView.swift in Sources */,
+				5F1582011C48CF18009CC42E /* Shapes.swift in Sources */,
 				5F80016E1C474F1E00183BA4 /* ViewController.swift in Sources */,
 				5F80016C1C474F1E00183BA4 /* AppDelegate.swift in Sources */,
 				5F80017E1C4756ED00183BA4 /* CanvasView.swift in Sources */,
 				5F8001841C47574200183BA4 /* CanvasViewController.swift in Sources */,
 				5F80018C1C48A5CA00183BA4 /* API.swift in Sources */,
+				5F1582031C48D735009CC42E /* ShapesView.swift in Sources */,
+				5F1582051C48DB08009CC42E /* CGMath.swift in Sources */,
 				5F8001861C47576200183BA4 /* FeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

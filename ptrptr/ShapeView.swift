@@ -9,5 +9,8 @@
 import UIKit
 
 class ShapeView: UIView {
-
+    func setup() {
+        
+    }
+    var _id: String!
 }

@@ -20,4 +20,10 @@ class FeedViewController: UIViewController {
             label.text = "who dis"
         }
     }
+    
+    @IBAction func showProfile() {
+        let canvasVC = storyboard!.instantiateViewControllerWithIdentifier("CanvasViewController") as! CanvasViewController
+        canvasVC.canvas = API.Shared.firebaseRoot.childByAppendingPath("profiles/id123")
+        navigationController!.pushViewController(canvasVC, animated: true)
+    }
 }
