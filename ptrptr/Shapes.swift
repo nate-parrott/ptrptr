@@ -14,6 +14,8 @@ struct Shapes {
         let type = shape["type"] as? String ?? ""
         var view: ShapeView!
         switch type {
+        case "path":
+            view = renderPath(shape, existingView: view, ctx: ctx)
         default:
             view = renderBase(shape, existingView: existingView, ctx: ctx)
         }
@@ -32,6 +34,35 @@ struct Shapes {
         }
         view.transform = CGAffineTransformScale(CGAffineTransformMakeRotation(rotation * CGFloat(M_PI) / 180.0), scale, scale)
         return view
+    }
+    
+    static func renderPath(shape: Shape, existingView: ShapeView?, ctx: ShapesView.RenderContext) -> ShapeView {
+        let view = (existingView as? PathShapeView) ?? PathShapeView()
+        let path = shape["path"] as? [CGFloat] ?? []
+        view.setPathAndCenter(path, inCoordinateSpace: ctx.coordinateSpace)
+        
+        var strokeColor: CGColorRef?
+        var strokeWidth: CGFloat = 0
+        if let stroke = shape["stroke"] as? [String: AnyObject] {
+            strokeWidth = stroke["width"] as? CGFloat ?? 0
+            if let colorArray = stroke["color"] as? [CGFloat] {
+                strokeColor = ctx.colorFunc(colorArray).CGColor
+            }
+        }
+        
+        var fillColor: CGColorRef?
+        if let fill = shape["fill"] as? [String: AnyObject] {
+            let type = fill["type"] as? String ?? ""
+            if type == "solid", let colorArray = fill["color"] as? [CGFloat] {
+                fillColor = ctx.colorFunc(colorArray).CGColor
+            }
+        }
+        
+        view.shapeLayer.fillColor = fillColor
+        view.shapeLayer.lineWidth = strokeWidth
+        view.shapeLayer.strokeColor = strokeColor
+        
+        return renderBase(shape, existingView: view, ctx: ctx)
     }
     
     static func convertShapeDictToArray(shapes: [String: Shape]) -> [(String, Shape)] {

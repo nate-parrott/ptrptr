@@ -66,6 +66,7 @@ class CanvasView: ShapesView {
         if _needsRender {
             if let shapeDict = _value?["shapes"] as? [String: Shape] {
                 render(Shapes.convertShapeDictToArray(shapeDict))
+                _needsRender = false
             }
         }
     }

@@ -8,12 +8,32 @@
 
 import UIKit
 
-typealias Shape = [String: AnyObject]
-
 class ShapesView: UIView {
     var _viewsByID = [String: ShapeView]()
     func render(shapes: [(String, Shape)]) {
-        
+        for (id, shape) in shapes {
+            if let user = shape["author"] as? User {
+                let existingOpt: ShapeView? = _viewsByID[id]
+                let renderCtx = RenderContext(coordinateSpace: coordinateSpace, colorFunc: CreateColorFunctionForUser(user))
+                let view = Shapes.renderShape(id, shape: shape, existingView: existingOpt, ctx: renderCtx)
+                if view.superview !== self {
+                    _viewsByID[id]?.removeFromSuperview()
+                    _viewsByID[id] = view
+                    addSubview(view)
+                } else {
+                    bringSubviewToFront(view)
+                }
+            } else {
+                print("Shape with no user!") // TODO: remove? too much logging?
+            }
+        }
+        let usedIDs = Set(shapes.map({$0.0}))
+        for id in Array(_viewsByID.keys) {
+            if !usedIDs.contains(id) {
+                _viewsByID[id]!.removeFromSuperview()
+                _viewsByID.removeValueForKey(id)
+            }
+        }
     }
     
     class CoordinateSpace: NSObject, UICoordinateSpace {
@@ -68,5 +88,6 @@ class ShapesView: UIView {
     
     struct RenderContext {
         let coordinateSpace: CoordinateSpace
+        let colorFunc: [CGFloat] -> UIColor // parses and enforces color constraints
     }
 }

@@ -27,3 +27,11 @@ func -(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
 func /(lhs: CGPoint, rhs: CGFloat) -> CGPoint {
     return CGPointMake(lhs.x / rhs, lhs.y / rhs)
 }
+
+extension CGRect {
+    var center: CGPoint {
+        get {
+            return CGPoint(x: CGRectGetMidX(self), y: CGRectGetMidY(self))
+        }
+    }
+}

@@ -165,6 +165,9 @@
                             <constraint firstAttribute="trailing" secondItem="CZ7-km-cie" secondAttribute="trailing" id="aLR-EZ-lPw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="toolbar" destination="CZ7-km-cie" id="T59-l4-w15"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jvm-BQ-xWC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

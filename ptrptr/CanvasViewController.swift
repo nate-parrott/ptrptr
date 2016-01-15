@@ -30,8 +30,9 @@ class CanvasViewController: UIViewController {
                 n.translatesAutoresizingMaskIntoConstraints = false
                 let a = topLayoutGuide.bottomAnchor.constraintEqualToAnchor(n.topAnchor)
                 let b = view.centerXAnchor.constraintEqualToAnchor(n.centerXAnchor)
-                let c = toolbar.topAnchor.constraintEqualToAnchor(n.bottomAnchor)
-                view.addConstraints([a, b, c])
+                let c = view.widthAnchor.constraintEqualToAnchor(n.widthAnchor)
+                let d = toolbar.topAnchor.constraintEqualToAnchor(n.bottomAnchor)
+                view.addConstraints([a, b, c, d])
             }
         }
     }

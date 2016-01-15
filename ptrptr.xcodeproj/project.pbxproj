@@ -10,6 +10,8 @@
 		5F1582011C48CF18009CC42E /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582001C48CF18009CC42E /* Shapes.swift */; };
 		5F1582031C48D735009CC42E /* ShapesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582021C48D735009CC42E /* ShapesView.swift */; };
 		5F1582051C48DB08009CC42E /* CGMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582041C48DB08009CC42E /* CGMath.swift */; };
+		5F1582071C48F681009CC42E /* PathShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582061C48F681009CC42E /* PathShapeView.swift */; };
+		5F1582091C48F9E0009CC42E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582081C48F9E0009CC42E /* Colors.swift */; };
 		5F80016C1C474F1E00183BA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F80016B1C474F1E00183BA4 /* AppDelegate.swift */; };
 		5F80016E1C474F1E00183BA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F80016D1C474F1E00183BA4 /* ViewController.swift */; };
 		5F8001711C474F1E00183BA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F80016F1C474F1E00183BA4 /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 		5F1582001C48CF18009CC42E /* Shapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		5F1582021C48D735009CC42E /* ShapesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapesView.swift; sourceTree = "<group>"; };
 		5F1582041C48DB08009CC42E /* CGMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGMath.swift; sourceTree = "<group>"; };
+		5F1582061C48F681009CC42E /* PathShapeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathShapeView.swift; sourceTree = "<group>"; };
+		5F1582081C48F9E0009CC42E /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5F8001681C474F1E00183BA4 /* ptrptr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ptrptr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F80016B1C474F1E00183BA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F80016D1C474F1E00183BA4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -92,12 +96,14 @@
 				5F80016D1C474F1E00183BA4 /* ViewController.swift */,
 				5F80018B1C48A5CA00183BA4 /* API.swift */,
 				5F8001891C4759E900183BA4 /* LoginViewController.swift */,
+				5F8001831C47574200183BA4 /* CanvasViewController.swift */,
 				5F80017D1C4756EC00183BA4 /* CanvasView.swift */,
 				5F1582021C48D735009CC42E /* ShapesView.swift */,
 				5F1582041C48DB08009CC42E /* CGMath.swift */,
 				5F1582001C48CF18009CC42E /* Shapes.swift */,
+				5F1582081C48F9E0009CC42E /* Colors.swift */,
 				5F8001871C47579D00183BA4 /* ShapeView.swift */,
-				5F8001831C47574200183BA4 /* CanvasViewController.swift */,
+				5F1582061C48F681009CC42E /* PathShapeView.swift */,
 				5F8001851C47576200183BA4 /* FeedViewController.swift */,
 				5F80016F1C474F1E00183BA4 /* Main.storyboard */,
 				5F8001721C474F1E00183BA4 /* Assets.xcassets */,
@@ -244,6 +250,8 @@
 				5F80016C1C474F1E00183BA4 /* AppDelegate.swift in Sources */,
 				5F80017E1C4756ED00183BA4 /* CanvasView.swift in Sources */,
 				5F8001841C47574200183BA4 /* CanvasViewController.swift in Sources */,
+				5F1582071C48F681009CC42E /* PathShapeView.swift in Sources */,
+				5F1582091C48F9E0009CC42E /* Colors.swift in Sources */,
 				5F80018C1C48A5CA00183BA4 /* API.swift in Sources */,
 				5F1582031C48D735009CC42E /* ShapesView.swift in Sources */,
 				5F1582051C48DB08009CC42E /* CGMath.swift in Sources */,

@@ -9,6 +9,9 @@
 import Foundation
 import Firebase
 
+typealias Shape = [String: AnyObject]
+typealias User = [String: AnyObject]
+
 class API: NSObject {
     static let Shared = API()
     

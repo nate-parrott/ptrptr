@@ -18,6 +18,8 @@
 					"scale": 1,
 					"rotation": 0,
 					"opacity": 1,
+					"saturation": 0.7,
+					"value": 0.8,
 					"x": 30,
 					"y": 40,
 					"z": 100,
@@ -31,6 +33,14 @@
 				"002a": {
 					"type": "path",
 					"path": [0,0,100,100,0,100],
+					"stroke": {
+						"color": [0.2, 0.2, 1, 1],
+						"width": 2
+					},
+					"fill": {
+						"type": "solid",
+						"color": [0.2, 0.2, 1, 0.3]
+					},
 					"scale": 1,
 					"rotation": 0,
 					"opacity": 1,
