@@ -8,9 +8,12 @@
 
 import UIKit
 
-func CreateColorFunctionForUser(user: User) -> ([CGFloat] -> UIColor) {
+func GetUserColor(user: User) -> UIColor {
     let userColor = user["color"] as? [CGFloat] ?? [1,0,0,1]
-    let color = UIColor(red: userColor[0], green: userColor[1], blue: userColor[2], alpha: 1)
+    return UIColor(red: userColor[0], green: userColor[1], blue: userColor[2], alpha: 1)
+}
+
+func CreateColorFunctionForUserColor(color: UIColor) -> ([CGFloat] -> UIColor) {
     let userHue = color.hsva.0
     
     return { (channels: [CGFloat]) -> UIColor in

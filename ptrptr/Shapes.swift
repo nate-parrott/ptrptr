@@ -45,26 +45,39 @@ struct Shapes {
         let path = shape["path"] as? [CGFloat] ?? []
         view.setPathAndFrame(path, inCoordinateSpace: ctx.coordinateSpace)
         
-        var strokeColor: CGColorRef?
+        var strokeColor: UIColor?
         var strokeWidth: CGFloat = 0
         if let stroke = shape["stroke"] as? [String: AnyObject] {
             strokeWidth = stroke["width"] as? CGFloat ?? 0
             if let colorArray = stroke["color"] as? [CGFloat] {
-                strokeColor = ctx.colorFunc(colorArray).CGColor
+                strokeColor = ctx.colorFunc(colorArray)
             }
         }
         
-        var fillColor: CGColorRef?
-        if let fill = shape["fill"] as? [String: AnyObject] {
-            let type = fill["type"] as? String ?? ""
-            if type == "solid", let colorArray = fill["color"] as? [CGFloat] {
-                fillColor = ctx.colorFunc(colorArray).CGColor
+        var fill: PathShapeView.Fill?
+        if let fillDict = shape["fill"] as? [String: AnyObject] {
+            let type = fillDict["type"] as? String ?? ""
+            switch type {
+            case "solid":
+                if let colorArray = fillDict["color"] as? [CGFloat] {
+                    fill = PathShapeView.Fill.Color(ctx.colorFunc(colorArray))
+                }
+            case "image":
+                if let urlString = fillDict["url"] as? String, url = NSURL(string: urlString) {
+                    fill = PathShapeView.Fill.ImageURL(url)
+                }
+                // images need a border
+                if strokeColor == nil {
+                    strokeColor = ctx.userColor
+                }
+                if strokeWidth == 0 {
+                    strokeWidth = 2
+                }
+            default: ()
             }
         }
-        
-        view.shapeLayer.fillColor = fillColor
-        view.shapeLayer.lineWidth = strokeWidth
-        view.shapeLayer.strokeColor = strokeColor
+        view.fill = fill
+        view.stroke = (strokeColor, strokeWidth)
         
         return view
     }

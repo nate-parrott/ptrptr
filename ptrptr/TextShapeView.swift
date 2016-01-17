@@ -10,6 +10,13 @@ import UIKit
 
 class TextShapeView: ShapeView {
     let _label = UILabel()
+    
+    override func setup() {
+        super.setup()
+        addSubview(_label)
+        _label.numberOfLines = 0
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         _label.frame = bounds
@@ -21,11 +28,6 @@ class TextShapeView: ShapeView {
                 let (string, size) = newVal
                 bounds = CGRectMake(0, 0, size.width, size.height)
                 _label.attributedText = string.resizeToFitInside(size)
-                if _label.superview == nil {
-                    // set up label:
-                    addSubview(_label)
-                    _label.numberOfLines = 0
-                }
             }
         }
     }

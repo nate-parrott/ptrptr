@@ -14,7 +14,10 @@ class ShapesView: UIView {
         for (id, shape) in shapes {
             if let user = shape["author"] as? User {
                 let existingOpt: ShapeView? = _viewsByID[id]
-                let renderCtx = RenderContext(coordinateSpace: coordinateSpace, colorFunc: CreateColorFunctionForUser(user))
+                
+                let userColor = GetUserColor(user)
+                let renderCtx = RenderContext(coordinateSpace: coordinateSpace, colorFunc: CreateColorFunctionForUserColor(userColor), userColor: userColor)
+                
                 let view = Shapes.renderShape(id, shape: shape, existingView: existingOpt, ctx: renderCtx)
                 if view.superview !== self {
                     _viewsByID[id]?.removeFromSuperview()
@@ -89,5 +92,6 @@ class ShapesView: UIView {
     struct RenderContext {
         let coordinateSpace: CoordinateSpace
         let colorFunc: [CGFloat] -> UIColor // parses and enforces color constraints
+        let userColor: UIColor
     }
 }

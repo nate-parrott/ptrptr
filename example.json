@@ -52,19 +52,17 @@
 					"modified": "1452810876"
 				},
 				"003a": {
-					"type": "image",
-					"path": [0,0,100,100,0,100],
-					"width": 200,
-					"height": 200,
+					"type": "path",
+					"path": [200,200, 200,300, 300,300, 300, 200],
 					"z": 3,
-					"url": "https://lh6.ggpht.com/2naSwjOw1NIG9XJF46s5Qvgruw7zgnQ3ym7Fez9bYMfWvC4Uw2PjNCCrfacy8Z1R3A=w300",
-					"scale": 1,
-					"rotation": 45,
-					"opacity": 0.5,
 					"author": {
 						"id": "id456",
 						"name": "Thurston Wilson",
 						"color": [0.2, 0.2, 1, 1]
+					},
+					"fill": {
+						"type": "image",
+						"url": "https://lh6.ggpht.com/2naSwjOw1NIG9XJF46s5Qvgruw7zgnQ3ym7Fez9bYMfWvC4Uw2PjNCCrfacy8Z1R3A=w300"
 					},
 					"modified": "1452810876"
 				}

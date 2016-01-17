@@ -16,4 +16,26 @@ class API: NSObject {
     static let Shared = API()
     
     let firebaseRoot = Firebase(url: "https://ptrptr.firebaseio.com")
+    
+    let _servicesURL = "https://surfboard-services.appspot.com"
+    
+    func uploadAsset(data: NSData, contentType: String, callback: (url: NSURL?, error: NSError?) -> ()) {
+        let urlComps = NSURLComponents(string: _servicesURL)!
+        urlComps.queryItems = [NSURLQueryItem(name: "content_type", value: contentType)]
+        let req = NSMutableURLRequest(URL: urlComps.URL!)
+        req.HTTPMethod = "POST"
+        req.HTTPBody = data
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(req) { (dataOpt, responseOpt, errorOpt) -> Void in
+            if let data = dataOpt,
+                response = try? NSJSONSerialization.JSONObjectWithData(data, options: []),
+                responseDict = response as? [String: AnyObject],
+                urlString = responseDict["url"] as? String,
+                url = NSURL(string: urlString) {
+                    callback(url: url, error: nil)
+            } else {
+                callback(url: nil, error: errorOpt)
+            }
+        }
+        task.resume()
+    }
 }
