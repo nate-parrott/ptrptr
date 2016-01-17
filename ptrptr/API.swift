@@ -15,8 +15,28 @@ typealias User = [String: AnyObject]
 class API: NSObject {
     static let Shared = API()
     
+    override init() {
+        super.init()
+        firebaseRoot.observeAuthEventWithBlock { [weak self] (let authOpt: FAuthData?) -> Void in
+            self!.userPath = authOpt == nil ? nil : self!.firebaseRoot.childByAppendingPath("users").childByAppendingPath(authOpt!.uid)
+        }
+    }
+    
     let firebaseRoot = Firebase(url: "https://ptrptr.firebaseio.com")
     
+    // MARK: User
+    private(set) var userPath: Firebase? {
+        willSet(newVal) {
+            userPath?.removeAllObservers()
+            newVal?.observeSingleEventOfType(.Value, withBlock: { [weak self] (let snapshotOpt: FDataSnapshot?) -> Void in
+                self!.userSnapshot = snapshotOpt
+            })
+        }
+    }
+    var _userPathChangeObserver: UInt?
+    var userSnapshot: FDataSnapshot?
+    
+    // MARK: Assets
     let _servicesURL = "https://surfboard-services.appspot.com"
     
     func uploadAsset(data: NSData, contentType: String, callback: (url: NSURL?, error: NSError?) -> ()) {
@@ -39,6 +59,7 @@ class API: NSObject {
         task.resume()
     }
     
+    // MARK: Onboarding
     func checkIfOnboardingComplete(callback: (result: Bool?) -> ()) {
         firebaseRoot.childByAppendingPath("users").childByAppendingPath(firebaseRoot.authData.uid).childByAppendingPath("onboarded").observeSingleEventOfType(.Value) { (let snapshotOpt: FDataSnapshot?) -> Void in
             if let snapshot = snapshotOpt {
