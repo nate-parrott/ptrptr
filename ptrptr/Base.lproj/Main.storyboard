@@ -8,7 +8,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ptrptr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -110,31 +110,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVv-1S-MET">
-                                <rect key="frame" x="139" y="273.5" width="42" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ubc-m1-MIy">
-                                <rect key="frame" x="126" y="302" width="69" height="30"/>
-                                <state key="normal" title="My Profile"/>
-                                <connections>
-                                    <action selector="showProfile" destination="SDa-zw-nht" eventType="touchUpInside" id="D6t-Lc-Fm1"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rs2-D7-k7R" customClass="ViewCollection" customModule="ptrptr" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="IVv-1S-MET" firstAttribute="centerX" secondItem="2QK-Dd-nfs" secondAttribute="centerX" id="1wd-L9-SJX"/>
-                            <constraint firstItem="Ubc-m1-MIy" firstAttribute="top" secondItem="IVv-1S-MET" secondAttribute="bottom" constant="8" id="R5t-LC-0T1"/>
-                            <constraint firstItem="Ubc-m1-MIy" firstAttribute="centerX" secondItem="IVv-1S-MET" secondAttribute="centerX" id="ZcS-6A-weK"/>
-                            <constraint firstItem="IVv-1S-MET" firstAttribute="centerY" secondItem="2QK-Dd-nfs" secondAttribute="centerY" id="x4x-EJ-qow"/>
+                            <constraint firstItem="rs2-D7-k7R" firstAttribute="top" secondItem="2QK-Dd-nfs" secondAttribute="top" id="8lz-mU-ZpX"/>
+                            <constraint firstAttribute="trailing" secondItem="rs2-D7-k7R" secondAttribute="trailing" id="VpP-JV-kEk"/>
+                            <constraint firstItem="V83-hH-Vnh" firstAttribute="top" secondItem="rs2-D7-k7R" secondAttribute="bottom" id="tRS-j2-sKJ"/>
+                            <constraint firstItem="rs2-D7-k7R" firstAttribute="leading" secondItem="2QK-Dd-nfs" secondAttribute="leading" id="uIO-aC-cVv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="q13-Xk-CMe"/>
                     <connections>
-                        <outlet property="label" destination="IVv-1S-MET" id="3Gd-pi-qy9"/>
+                        <outlet property="collection" destination="rs2-D7-k7R" id="Xcn-RP-hAq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DSJ-wN-Z50" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -155,6 +146,7 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZ7-km-cie">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <items/>
                             </toolbar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVR-J4-2sq">
@@ -169,6 +161,9 @@
                                 <state key="normal" title="+">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="insertShape" destination="6dX-U6-8kL" eventType="touchUpInside" id="r4h-AY-eLO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -181,10 +176,47 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="drawingModeBar" destination="u0M-O9-Ome" id="QP0-cE-EYF"/>
                         <outlet property="toolbar" destination="CZ7-km-cie" id="T59-l4-w15"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jvm-BQ-xWC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="u0M-O9-Ome" customClass="DrawingEditModeBar" customModule="ptrptr" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXx-7Y-AkK">
+                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="BlB-Rn-Cyn"/>
+                            </constraints>
+                            <state key="normal" image="X"/>
+                            <connections>
+                                <action selector="popEditMode" destination="6dX-U6-8kL" eventType="touchUpInside" id="6HT-bY-WgX"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZL-qW-KY9">
+                            <rect key="frame" x="284" y="0.0" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="vkx-a6-H3m"/>
+                            </constraints>
+                            <state key="normal" image="Check"/>
+                            <connections>
+                                <action selector="confirm" destination="u0M-O9-Ome" eventType="touchUpInside" id="clS-sQ-iAw"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.1333333333" green="0.71764705880000002" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="sXx-7Y-AkK" secondAttribute="bottom" id="JZy-e1-o2g"/>
+                        <constraint firstAttribute="trailing" secondItem="gZL-qW-KY9" secondAttribute="trailing" id="UjI-iS-BKA"/>
+                        <constraint firstItem="sXx-7Y-AkK" firstAttribute="leading" secondItem="u0M-O9-Ome" secondAttribute="leading" id="gTT-ZO-zgK"/>
+                        <constraint firstAttribute="bottom" secondItem="gZL-qW-KY9" secondAttribute="bottom" id="ggR-zc-eLk"/>
+                        <constraint firstItem="sXx-7Y-AkK" firstAttribute="top" secondItem="u0M-O9-Ome" secondAttribute="top" id="iPK-fS-WpZ"/>
+                        <constraint firstItem="gZL-qW-KY9" firstAttribute="top" secondItem="u0M-O9-Ome" secondAttribute="top" id="umn-ES-ezt"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="1305" y="797"/>
         </scene>
@@ -316,4 +348,8 @@
             <point key="canvasLocation" x="1713" y="797"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Check" width="32" height="22"/>
+        <image name="X" width="23" height="23"/>
+    </resources>
 </document>

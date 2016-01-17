@@ -24,6 +24,7 @@ class OnboardingViewController: UIViewController {
         let (r,g,b,a) = UIColor(hue: hue.hue, saturation: 1, brightness: 1, alpha: 1).rgba
         user.childByAppendingPath("color").setValue([r,g,b,a])
         user.childByAppendingPath("onboarded").setValue(true)
+        API.Shared.firebaseRoot.childByAppendingPath("profiles").childByAppendingPath(API.Shared.firebaseRoot.authData.uid).setValue(API.Shared.getJsonForNewCanvas(true))
         dismissViewControllerAnimated(true, completion: nil)
     }
     

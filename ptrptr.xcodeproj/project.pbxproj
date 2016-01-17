@@ -23,8 +23,11 @@
 		5F15821F1C4B6145009CC42E /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F15821E1C4B6145009CC42E /* Pixel.swift */; };
 		5F1582221C4B615F009CC42E /* RGB-HSV.c in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582211C4B615F009CC42E /* RGB-HSV.c */; };
 		5F1582241C4B6780009CC42E /* KeyboardAvoidance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582231C4B6780009CC42E /* KeyboardAvoidance.swift */; };
+		5F1582261C4B8934009CC42E /* ViewCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582251C4B8934009CC42E /* ViewCollection.swift */; };
+		5F1582281C4B8942009CC42E /* FeedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582271C4B8942009CC42E /* FeedCellView.swift */; };
+		5F15822A1C4C335F009CC42E /* EditModeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582291C4C335F009CC42E /* EditModeBar.swift */; };
+		5F15822C1C4C3482009CC42E /* DrawingEditModeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F15822B1C4C3482009CC42E /* DrawingEditModeBar.swift */; };
 		5F80016C1C474F1E00183BA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F80016B1C474F1E00183BA4 /* AppDelegate.swift */; };
-		5F80016E1C474F1E00183BA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F80016D1C474F1E00183BA4 /* ViewController.swift */; };
 		5F8001711C474F1E00183BA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F80016F1C474F1E00183BA4 /* Main.storyboard */; };
 		5F8001731C474F1E00183BA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F8001721C474F1E00183BA4 /* Assets.xcassets */; };
 		5F8001761C474F1E00183BA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F8001741C474F1E00183BA4 /* LaunchScreen.storyboard */; };
@@ -59,9 +62,12 @@
 		5F1582201C4B615F009CC42E /* RGB-HSV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RGB-HSV.h"; sourceTree = "<group>"; };
 		5F1582211C4B615F009CC42E /* RGB-HSV.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "RGB-HSV.c"; sourceTree = "<group>"; };
 		5F1582231C4B6780009CC42E /* KeyboardAvoidance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAvoidance.swift; sourceTree = "<group>"; };
+		5F1582251C4B8934009CC42E /* ViewCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewCollection.swift; sourceTree = "<group>"; };
+		5F1582271C4B8942009CC42E /* FeedCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCellView.swift; sourceTree = "<group>"; };
+		5F1582291C4C335F009CC42E /* EditModeBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditModeBar.swift; sourceTree = "<group>"; };
+		5F15822B1C4C3482009CC42E /* DrawingEditModeBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingEditModeBar.swift; sourceTree = "<group>"; };
 		5F8001681C474F1E00183BA4 /* ptrptr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ptrptr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F80016B1C474F1E00183BA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5F80016D1C474F1E00183BA4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5F8001701C474F1E00183BA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5F8001721C474F1E00183BA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F8001751C474F1E00183BA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -100,6 +106,8 @@
 		5F1582101C49A3E9009CC42E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				5F1582081C48F9E0009CC42E /* Colors.swift */,
+				5F1582251C4B8934009CC42E /* ViewCollection.swift */,
 				5F15821C1C4B612F009CC42E /* HueSlider.swift */,
 				5F15821E1C4B6145009CC42E /* Pixel.swift */,
 				5F1582151C4B5B72009CC42E /* QuickCollectionModal.h */,
@@ -113,6 +121,39 @@
 				5F1582211C4B615F009CC42E /* RGB-HSV.c */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		5F15822D1C4C35F2009CC42E /* Canvas */ = {
+			isa = PBXGroup;
+			children = (
+				5F8001831C47574200183BA4 /* CanvasViewController.swift */,
+				5F1582021C48D735009CC42E /* ShapesView.swift */,
+				5F80017D1C4756EC00183BA4 /* CanvasView.swift */,
+				5F1582181C4B5C80009CC42E /* InsertItemViewController.swift */,
+				5F1582291C4C335F009CC42E /* EditModeBar.swift */,
+				5F15822B1C4C3482009CC42E /* DrawingEditModeBar.swift */,
+			);
+			name = Canvas;
+			sourceTree = "<group>";
+		};
+		5F15822E1C4C3604009CC42E /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				5F1582001C48CF18009CC42E /* Shapes.swift */,
+				5F8001871C47579D00183BA4 /* ShapeView.swift */,
+				5F1582061C48F681009CC42E /* PathShapeView.swift */,
+				5F15820A1C49A02F009CC42E /* TextShapeView.swift */,
+			);
+			name = Shapes;
+			sourceTree = "<group>";
+		};
+		5F15822F1C4C3615009CC42E /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				5F8001891C4759E900183BA4 /* LoginViewController.swift */,
+				5F15821A1C4B611C009CC42E /* OnboardingViewController.swift */,
+			);
+			name = Onboarding;
 			sourceTree = "<group>";
 		};
 		5F80015F1C474F1E00183BA4 = {
@@ -137,23 +178,15 @@
 			isa = PBXGroup;
 			children = (
 				5F80016B1C474F1E00183BA4 /* AppDelegate.swift */,
-				5F80016D1C474F1E00183BA4 /* ViewController.swift */,
 				5F80018B1C48A5CA00183BA4 /* API.swift */,
-				5F8001891C4759E900183BA4 /* LoginViewController.swift */,
-				5F8001831C47574200183BA4 /* CanvasViewController.swift */,
-				5F1582021C48D735009CC42E /* ShapesView.swift */,
-				5F80017D1C4756EC00183BA4 /* CanvasView.swift */,
-				5F1582001C48CF18009CC42E /* Shapes.swift */,
-				5F1582081C48F9E0009CC42E /* Colors.swift */,
-				5F8001871C47579D00183BA4 /* ShapeView.swift */,
-				5F1582061C48F681009CC42E /* PathShapeView.swift */,
-				5F15820A1C49A02F009CC42E /* TextShapeView.swift */,
-				5F8001851C47576200183BA4 /* FeedViewController.swift */,
-				5F1582181C4B5C80009CC42E /* InsertItemViewController.swift */,
-				5F15821A1C4B611C009CC42E /* OnboardingViewController.swift */,
-				5F1582231C4B6780009CC42E /* KeyboardAvoidance.swift */,
-				5F1582101C49A3E9009CC42E /* Utils */,
 				5F80016F1C474F1E00183BA4 /* Main.storyboard */,
+				5F15822F1C4C3615009CC42E /* Onboarding */,
+				5F15822D1C4C35F2009CC42E /* Canvas */,
+				5F15822E1C4C3604009CC42E /* Shapes */,
+				5F8001851C47576200183BA4 /* FeedViewController.swift */,
+				5F1582231C4B6780009CC42E /* KeyboardAvoidance.swift */,
+				5F1582271C4B8942009CC42E /* FeedCellView.swift */,
+				5F1582101C49A3E9009CC42E /* Utils */,
 				5F8001721C474F1E00183BA4 /* Assets.xcassets */,
 				5F8001741C474F1E00183BA4 /* LaunchScreen.storyboard */,
 				5F8001771C474F1E00183BA4 /* Info.plist */,
@@ -293,12 +326,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F80018A1C4759E900183BA4 /* LoginViewController.swift in Sources */,
+				5F1582261C4B8934009CC42E /* ViewCollection.swift in Sources */,
 				5F1582191C4B5C80009CC42E /* InsertItemViewController.swift in Sources */,
 				5F8001881C47579D00183BA4 /* ShapeView.swift in Sources */,
 				5F1582121C4B4FF8009CC42E /* NetImageView.swift in Sources */,
 				5F1582011C48CF18009CC42E /* Shapes.swift in Sources */,
 				5F1582241C4B6780009CC42E /* KeyboardAvoidance.swift in Sources */,
-				5F80016E1C474F1E00183BA4 /* ViewController.swift in Sources */,
+				5F15822C1C4C3482009CC42E /* DrawingEditModeBar.swift in Sources */,
 				5F80016C1C474F1E00183BA4 /* AppDelegate.swift in Sources */,
 				5F15821B1C4B611C009CC42E /* OnboardingViewController.swift in Sources */,
 				5F80017E1C4756ED00183BA4 /* CanvasView.swift in Sources */,
@@ -309,10 +343,12 @@
 				5F15820F1C49A3E6009CC42E /* NSAttributedString+ResizeToFit.m in Sources */,
 				5F1582091C48F9E0009CC42E /* Colors.swift in Sources */,
 				5F80018C1C48A5CA00183BA4 /* API.swift in Sources */,
+				5F1582281C4B8942009CC42E /* FeedCellView.swift in Sources */,
 				5F15821F1C4B6145009CC42E /* Pixel.swift in Sources */,
 				5F1582031C48D735009CC42E /* ShapesView.swift in Sources */,
 				5F1582141C4B5115009CC42E /* Queues.swift in Sources */,
 				5F1582221C4B615F009CC42E /* RGB-HSV.c in Sources */,
+				5F15822A1C4C335F009CC42E /* EditModeBar.swift in Sources */,
 				5F1582051C48DB08009CC42E /* CGMath.swift in Sources */,
 				5F8001861C47576200183BA4 /* FeedViewController.swift in Sources */,
 				5F15820B1C49A02F009CC42E /* TextShapeView.swift in Sources */,

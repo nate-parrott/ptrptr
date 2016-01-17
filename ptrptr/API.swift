@@ -69,4 +69,37 @@ class API: NSObject {
             }
         }
     }
+    
+    // MARK: Canvas
+    let aspectRatioForFeedZone: CGFloat = 0.5
+    
+    func getJsonForNewCanvas(isUserProfile: Bool) -> [String: AnyObject] {
+        var size = UIScreen.mainScreen().bounds.size
+        size.height -= 44
+        
+        var zones = [String: AnyObject]()
+        let margin: CGFloat = 10
+        if isUserProfile {
+            let feedWidth = (size.width - margin*2)
+            let feedHeight = feedWidth * aspectRatioForFeedZone
+            zones["feed"] = [margin, margin, feedWidth, feedHeight]
+            zones["thumbnail"] = [margin, margin, feedHeight, feedHeight]
+        } else {
+            let thumbSize = size.width * 0.26
+            zones["thumbnail"] = [margin, margin, thumbSize, thumbSize]
+        }
+        
+        return [
+            "width": "\(size.width)",
+            "height": "\(size.height)",
+            "owner": firebaseRoot.authData.uid,
+            "zones": zones,
+            "modified": timestampString()
+        ]
+    }
+    
+    // MARK: Utils
+    func timestampString() -> String {
+        return "\(NSDate().timeIntervalSince1970)"
+    }
 }

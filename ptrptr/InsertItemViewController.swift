@@ -9,7 +9,7 @@
 import UIKit
 
 class InsertItemViewController: QuickCollectionModal {
-    var canvas: CanvasView!
+    var parent: CanvasViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,8 +64,9 @@ class InsertItemViewController: QuickCollectionModal {
         sketch.label = NSLocalizedString("Sketch", comment: "")
         sketch.action = {
             [weak self] in
+            self!.parent.startDrawing()
         }
         
-        
+        items = [text, square, circle, image, link, page, counter, sketch]
     }
 }
