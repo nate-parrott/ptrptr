@@ -17,7 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        //API.Shared.firebaseRoot.unauth()
+        //return true
         
         API.Shared.firebaseRoot.observeAuthEventWithBlock { (authData: FAuthData?) -> Void in
             if authData == nil {

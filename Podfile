@@ -9,6 +9,8 @@ pod 'Firebase'
 pod 'Parse'
 pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
+pod 'ALGReversedFlowLayout'
+pod 'ChameleonFramework'
 
 end
 

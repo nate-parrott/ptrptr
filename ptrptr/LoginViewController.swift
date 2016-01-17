@@ -38,7 +38,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var loader: UIActivityIndicatorView!
     
     @IBAction func logIn() {
-        FBSDKLoginManager().logInWithReadPermissions(["email"], fromViewController: self) { (result: FBSDKLoginManagerLoginResult!, error: NSError?) -> Void in
+        FBSDKLoginManager().logInWithReadPermissions(["email", "public_profile"], fromViewController: self) { (result: FBSDKLoginManagerLoginResult!, error: NSError?) -> Void in
             if let err = error {
                 print("Facebook: \(err)")
             } else if result.isCancelled {

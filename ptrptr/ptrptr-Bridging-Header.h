@@ -3,3 +3,5 @@
 //
 
 #import "NSAttributedString+ResizeToFit.h"
+#import "QuickCollectionModal.h"
+#import "RGB-HSV.h"

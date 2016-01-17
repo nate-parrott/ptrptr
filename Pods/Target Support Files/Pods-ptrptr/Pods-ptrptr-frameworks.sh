@@ -84,14 +84,18 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-ptrptr/ALGReversedFlowLayout.framework"
   install_framework "Pods-ptrptr/Bolts.framework"
+  install_framework "Pods-ptrptr/ChameleonFramework.framework"
   install_framework "Pods-ptrptr/FBSDKCoreKit.framework"
   install_framework "Pods-ptrptr/FBSDKLoginKit.framework"
   install_framework "Pods-ptrptr/Firebase.framework"
   install_framework "Pods-ptrptr/Parse.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-ptrptr/ALGReversedFlowLayout.framework"
   install_framework "Pods-ptrptr/Bolts.framework"
+  install_framework "Pods-ptrptr/ChameleonFramework.framework"
   install_framework "Pods-ptrptr/FBSDKCoreKit.framework"
   install_framework "Pods-ptrptr/FBSDKLoginKit.framework"
   install_framework "Pods-ptrptr/Firebase.framework"

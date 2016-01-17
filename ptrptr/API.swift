@@ -38,4 +38,14 @@ class API: NSObject {
         }
         task.resume()
     }
+    
+    func checkIfOnboardingComplete(callback: (result: Bool?) -> ()) {
+        firebaseRoot.childByAppendingPath("users").childByAppendingPath(firebaseRoot.authData.uid).childByAppendingPath("onboarded").observeSingleEventOfType(.Value) { (let snapshotOpt: FDataSnapshot?) -> Void in
+            if let snapshot = snapshotOpt {
+                callback(result: snapshot.value as? Bool ?? false)
+            } else {
+                callback(result: nil)
+            }
+        }
+    }
 }

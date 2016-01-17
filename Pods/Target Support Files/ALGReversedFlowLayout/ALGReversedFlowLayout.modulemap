@@ -1,0 +1,6 @@
+framework module ALGReversedFlowLayout {
+  umbrella header "ALGReversedFlowLayout-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -19,6 +19,14 @@ class FeedViewController: UIViewController {
         } else {
             label.text = "who dis"
         }
+        
+        API.Shared.checkIfOnboardingComplete { (resultOpt) -> () in
+            if let result = resultOpt {
+                if !result {
+                    self.presentViewController(self.storyboard!.instantiateViewControllerWithIdentifier("OnboardingViewController"), animated: true, completion: nil)
+                }
+            }
+        }
     }
     
     @IBAction func showProfile() {

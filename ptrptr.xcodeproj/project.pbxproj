@@ -16,6 +16,13 @@
 		5F15820F1C49A3E6009CC42E /* NSAttributedString+ResizeToFit.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F15820E1C49A3E6009CC42E /* NSAttributedString+ResizeToFit.m */; };
 		5F1582121C4B4FF8009CC42E /* NetImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582111C4B4FF8009CC42E /* NetImageView.swift */; };
 		5F1582141C4B5115009CC42E /* Queues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582131C4B5115009CC42E /* Queues.swift */; };
+		5F1582171C4B5B72009CC42E /* QuickCollectionModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582161C4B5B72009CC42E /* QuickCollectionModal.m */; };
+		5F1582191C4B5C80009CC42E /* InsertItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582181C4B5C80009CC42E /* InsertItemViewController.swift */; };
+		5F15821B1C4B611C009CC42E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F15821A1C4B611C009CC42E /* OnboardingViewController.swift */; };
+		5F15821D1C4B612F009CC42E /* HueSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F15821C1C4B612F009CC42E /* HueSlider.swift */; };
+		5F15821F1C4B6145009CC42E /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F15821E1C4B6145009CC42E /* Pixel.swift */; };
+		5F1582221C4B615F009CC42E /* RGB-HSV.c in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582211C4B615F009CC42E /* RGB-HSV.c */; };
+		5F1582241C4B6780009CC42E /* KeyboardAvoidance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582231C4B6780009CC42E /* KeyboardAvoidance.swift */; };
 		5F80016C1C474F1E00183BA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F80016B1C474F1E00183BA4 /* AppDelegate.swift */; };
 		5F80016E1C474F1E00183BA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F80016D1C474F1E00183BA4 /* ViewController.swift */; };
 		5F8001711C474F1E00183BA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F80016F1C474F1E00183BA4 /* Main.storyboard */; };
@@ -43,6 +50,15 @@
 		5F15820E1C49A3E6009CC42E /* NSAttributedString+ResizeToFit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+ResizeToFit.m"; sourceTree = "<group>"; };
 		5F1582111C4B4FF8009CC42E /* NetImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetImageView.swift; sourceTree = "<group>"; };
 		5F1582131C4B5115009CC42E /* Queues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queues.swift; sourceTree = "<group>"; };
+		5F1582151C4B5B72009CC42E /* QuickCollectionModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickCollectionModal.h; sourceTree = "<group>"; };
+		5F1582161C4B5B72009CC42E /* QuickCollectionModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickCollectionModal.m; sourceTree = "<group>"; };
+		5F1582181C4B5C80009CC42E /* InsertItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertItemViewController.swift; sourceTree = "<group>"; };
+		5F15821A1C4B611C009CC42E /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		5F15821C1C4B612F009CC42E /* HueSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HueSlider.swift; sourceTree = "<group>"; };
+		5F15821E1C4B6145009CC42E /* Pixel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pixel.swift; sourceTree = "<group>"; };
+		5F1582201C4B615F009CC42E /* RGB-HSV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RGB-HSV.h"; sourceTree = "<group>"; };
+		5F1582211C4B615F009CC42E /* RGB-HSV.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "RGB-HSV.c"; sourceTree = "<group>"; };
+		5F1582231C4B6780009CC42E /* KeyboardAvoidance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAvoidance.swift; sourceTree = "<group>"; };
 		5F8001681C474F1E00183BA4 /* ptrptr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ptrptr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F80016B1C474F1E00183BA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F80016D1C474F1E00183BA4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,11 +100,17 @@
 		5F1582101C49A3E9009CC42E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				5F15821C1C4B612F009CC42E /* HueSlider.swift */,
+				5F15821E1C4B6145009CC42E /* Pixel.swift */,
+				5F1582151C4B5B72009CC42E /* QuickCollectionModal.h */,
+				5F1582161C4B5B72009CC42E /* QuickCollectionModal.m */,
 				5F1582111C4B4FF8009CC42E /* NetImageView.swift */,
 				5F1582041C48DB08009CC42E /* CGMath.swift */,
 				5F1582131C4B5115009CC42E /* Queues.swift */,
 				5F15820D1C49A3E6009CC42E /* NSAttributedString+ResizeToFit.h */,
 				5F15820E1C49A3E6009CC42E /* NSAttributedString+ResizeToFit.m */,
+				5F1582201C4B615F009CC42E /* RGB-HSV.h */,
+				5F1582211C4B615F009CC42E /* RGB-HSV.c */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -119,14 +141,17 @@
 				5F80018B1C48A5CA00183BA4 /* API.swift */,
 				5F8001891C4759E900183BA4 /* LoginViewController.swift */,
 				5F8001831C47574200183BA4 /* CanvasViewController.swift */,
-				5F80017D1C4756EC00183BA4 /* CanvasView.swift */,
 				5F1582021C48D735009CC42E /* ShapesView.swift */,
+				5F80017D1C4756EC00183BA4 /* CanvasView.swift */,
 				5F1582001C48CF18009CC42E /* Shapes.swift */,
 				5F1582081C48F9E0009CC42E /* Colors.swift */,
 				5F8001871C47579D00183BA4 /* ShapeView.swift */,
 				5F1582061C48F681009CC42E /* PathShapeView.swift */,
 				5F15820A1C49A02F009CC42E /* TextShapeView.swift */,
 				5F8001851C47576200183BA4 /* FeedViewController.swift */,
+				5F1582181C4B5C80009CC42E /* InsertItemViewController.swift */,
+				5F15821A1C4B611C009CC42E /* OnboardingViewController.swift */,
+				5F1582231C4B6780009CC42E /* KeyboardAvoidance.swift */,
 				5F1582101C49A3E9009CC42E /* Utils */,
 				5F80016F1C474F1E00183BA4 /* Main.storyboard */,
 				5F8001721C474F1E00183BA4 /* Assets.xcassets */,
@@ -268,19 +293,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F80018A1C4759E900183BA4 /* LoginViewController.swift in Sources */,
+				5F1582191C4B5C80009CC42E /* InsertItemViewController.swift in Sources */,
 				5F8001881C47579D00183BA4 /* ShapeView.swift in Sources */,
 				5F1582121C4B4FF8009CC42E /* NetImageView.swift in Sources */,
 				5F1582011C48CF18009CC42E /* Shapes.swift in Sources */,
+				5F1582241C4B6780009CC42E /* KeyboardAvoidance.swift in Sources */,
 				5F80016E1C474F1E00183BA4 /* ViewController.swift in Sources */,
 				5F80016C1C474F1E00183BA4 /* AppDelegate.swift in Sources */,
+				5F15821B1C4B611C009CC42E /* OnboardingViewController.swift in Sources */,
 				5F80017E1C4756ED00183BA4 /* CanvasView.swift in Sources */,
 				5F8001841C47574200183BA4 /* CanvasViewController.swift in Sources */,
 				5F1582071C48F681009CC42E /* PathShapeView.swift in Sources */,
+				5F15821D1C4B612F009CC42E /* HueSlider.swift in Sources */,
+				5F1582171C4B5B72009CC42E /* QuickCollectionModal.m in Sources */,
 				5F15820F1C49A3E6009CC42E /* NSAttributedString+ResizeToFit.m in Sources */,
 				5F1582091C48F9E0009CC42E /* Colors.swift in Sources */,
 				5F80018C1C48A5CA00183BA4 /* API.swift in Sources */,
+				5F15821F1C4B6145009CC42E /* Pixel.swift in Sources */,
 				5F1582031C48D735009CC42E /* ShapesView.swift in Sources */,
 				5F1582141C4B5115009CC42E /* Queues.swift in Sources */,
+				5F1582221C4B615F009CC42E /* RGB-HSV.c in Sources */,
 				5F1582051C48DB08009CC42E /* CGMath.swift in Sources */,
 				5F8001861C47576200183BA4 /* FeedViewController.swift in Sources */,
 				5F15820B1C49A02F009CC42E /* TextShapeView.swift in Sources */,

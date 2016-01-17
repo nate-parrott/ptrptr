@@ -41,4 +41,22 @@ extension UIColor {
             return (h,s,v,a)
         }
     }
+    
+    var rgba: (CGFloat, CGFloat, CGFloat, CGFloat) {
+        get {
+            var r: CGFloat = 0
+            var g: CGFloat = 0
+            var b: CGFloat = 0
+            var a: CGFloat = 0
+            if !getRed(&r, green: &g, blue: &b, alpha: &a) {
+                var brightness: CGFloat = 1
+                if getWhite(&brightness, alpha: &a) {
+                    r = brightness
+                    g = brightness
+                    b = brightness // TODO: this is not 100% correct
+                }
+            }
+            return (r,g,b,a)
+        }
+    }
 }

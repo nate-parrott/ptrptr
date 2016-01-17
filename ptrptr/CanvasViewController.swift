@@ -26,7 +26,7 @@ class CanvasViewController: UIViewController {
                 old.removeFromSuperview()
             }
             if let n = new {
-                view.addSubview(n)
+                view.insertSubview(n, atIndex: 0)
                 n.translatesAutoresizingMaskIntoConstraints = false
                 let a = topLayoutGuide.bottomAnchor.constraintEqualToAnchor(n.topAnchor)
                 let b = view.centerXAnchor.constraintEqualToAnchor(n.centerXAnchor)
@@ -36,4 +36,6 @@ class CanvasViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: Actions
 }
