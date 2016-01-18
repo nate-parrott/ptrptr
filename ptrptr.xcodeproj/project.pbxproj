@@ -29,6 +29,7 @@
 		5F15822C1C4C3482009CC42E /* DrawingEditModeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F15822B1C4C3482009CC42E /* DrawingEditModeBar.swift */; };
 		5F1582321C4C9EF6009CC42E /* CMTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582311C4C9EF6009CC42E /* CMTransaction.m */; };
 		5F1582351C4C9F04009CC42E /* CMWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582341C4C9F04009CC42E /* CMWindow.m */; };
+		5F1582381C4CE7BC009CC42E /* SelectionIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582371C4CE7BC009CC42E /* SelectionIndicatorView.m */; };
 		5F80016C1C474F1E00183BA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F80016B1C474F1E00183BA4 /* AppDelegate.swift */; };
 		5F8001711C474F1E00183BA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F80016F1C474F1E00183BA4 /* Main.storyboard */; };
 		5F8001731C474F1E00183BA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F8001721C474F1E00183BA4 /* Assets.xcassets */; };
@@ -39,6 +40,8 @@
 		5F8001881C47579D00183BA4 /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8001871C47579D00183BA4 /* ShapeView.swift */; };
 		5F80018A1C4759E900183BA4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8001891C4759E900183BA4 /* LoginViewController.swift */; };
 		5F80018C1C48A5CA00183BA4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F80018B1C48A5CA00183BA4 /* API.swift */; };
+		5FE7D29E1C4CEC6500DE424A /* ShapesView+HitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7D29D1C4CEC6500DE424A /* ShapesView+HitTest.swift */; };
+		5FE7D2A01C4D932B00DE424A /* CanvasView+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7D29F1C4D932B00DE424A /* CanvasView+Gestures.swift */; };
 		ED81CDA6D1D43439EA983C8A /* Pods_ptrptr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC6E2981E8BEFEDE4408EFB /* Pods_ptrptr.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +75,8 @@
 		5F1582311C4C9EF6009CC42E /* CMTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMTransaction.m; sourceTree = "<group>"; };
 		5F1582331C4C9F04009CC42E /* CMWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMWindow.h; sourceTree = "<group>"; };
 		5F1582341C4C9F04009CC42E /* CMWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMWindow.m; sourceTree = "<group>"; };
+		5F1582361C4CE7BC009CC42E /* SelectionIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionIndicatorView.h; sourceTree = "<group>"; };
+		5F1582371C4CE7BC009CC42E /* SelectionIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionIndicatorView.m; sourceTree = "<group>"; };
 		5F8001681C474F1E00183BA4 /* ptrptr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ptrptr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F80016B1C474F1E00183BA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F8001701C474F1E00183BA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,6 +89,8 @@
 		5F8001871C47579D00183BA4 /* ShapeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
 		5F8001891C4759E900183BA4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5F80018B1C48A5CA00183BA4 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		5FE7D29D1C4CEC6500DE424A /* ShapesView+HitTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShapesView+HitTest.swift"; sourceTree = "<group>"; };
+		5FE7D29F1C4D932B00DE424A /* CanvasView+Gestures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CanvasView+Gestures.swift"; sourceTree = "<group>"; };
 		8AC6E2981E8BEFEDE4408EFB /* Pods_ptrptr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ptrptr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C07CFBD98ACE4A8349238B98 /* Pods-ptrptr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ptrptr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ptrptr/Pods-ptrptr.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,10 +141,14 @@
 			children = (
 				5F8001831C47574200183BA4 /* CanvasViewController.swift */,
 				5F1582021C48D735009CC42E /* ShapesView.swift */,
+				5FE7D29D1C4CEC6500DE424A /* ShapesView+HitTest.swift */,
 				5F80017D1C4756EC00183BA4 /* CanvasView.swift */,
+				5FE7D29F1C4D932B00DE424A /* CanvasView+Gestures.swift */,
 				5F1582181C4B5C80009CC42E /* InsertItemViewController.swift */,
 				5F1582291C4C335F009CC42E /* EditModeBar.swift */,
 				5F15822B1C4C3482009CC42E /* DrawingEditModeBar.swift */,
+				5F1582361C4CE7BC009CC42E /* SelectionIndicatorView.h */,
+				5F1582371C4CE7BC009CC42E /* SelectionIndicatorView.m */,
 			);
 			name = Canvas;
 			sourceTree = "<group>";
@@ -343,7 +354,9 @@
 				5F1582121C4B4FF8009CC42E /* NetImageView.swift in Sources */,
 				5F1582011C48CF18009CC42E /* Shapes.swift in Sources */,
 				5F1582241C4B6780009CC42E /* KeyboardAvoidance.swift in Sources */,
+				5FE7D2A01C4D932B00DE424A /* CanvasView+Gestures.swift in Sources */,
 				5F15822C1C4C3482009CC42E /* DrawingEditModeBar.swift in Sources */,
+				5F1582381C4CE7BC009CC42E /* SelectionIndicatorView.m in Sources */,
 				5F80016C1C474F1E00183BA4 /* AppDelegate.swift in Sources */,
 				5F15821B1C4B611C009CC42E /* OnboardingViewController.swift in Sources */,
 				5F1582351C4C9F04009CC42E /* CMWindow.m in Sources */,
@@ -357,6 +370,7 @@
 				5F80018C1C48A5CA00183BA4 /* API.swift in Sources */,
 				5F1582281C4B8942009CC42E /* FeedCellView.swift in Sources */,
 				5F15821F1C4B6145009CC42E /* Pixel.swift in Sources */,
+				5FE7D29E1C4CEC6500DE424A /* ShapesView+HitTest.swift in Sources */,
 				5F1582031C48D735009CC42E /* ShapesView.swift in Sources */,
 				5F1582141C4B5115009CC42E /* Queues.swift in Sources */,
 				5F1582221C4B615F009CC42E /* RGB-HSV.c in Sources */,

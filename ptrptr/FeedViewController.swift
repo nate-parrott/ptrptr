@@ -82,7 +82,7 @@ class FeedViewController: UIViewController {
         let width = collection.bounds.size.width
         let height = width * API.Shared.aspectRatioForFeedZone
         let layout = collection.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        collection.collectionView.contentInset = UIEdgeInsetsMake(topLayoutGuide.length, 0, bottomLayoutGuide.length + 15, 0)
+        collection.collectionView.contentInset = UIEdgeInsetsMake(topLayoutGuide.length + 15, 0, bottomLayoutGuide.length + 15, 0)
         layout.itemSize = CGSizeMake(width, height)
         layout.minimumLineSpacing = 15
     }

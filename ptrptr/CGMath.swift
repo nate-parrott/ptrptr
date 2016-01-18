@@ -43,3 +43,19 @@ func ==(lhs: CGSize, rhs: CGSize) -> Bool {
 func !=(lhs: CGSize, rhs: CGSize) -> Bool {
     return !(lhs == rhs)
 }
+
+extension CGPoint {
+    var magnitude: CGFloat {
+        get {
+            return sqrt(pow(x, 2) + pow(y, 2))
+        }
+    }
+    var angle: CGFloat {
+        get {
+            return atan2(y, x)
+        }
+    }
+    func distanceFrom(other: CGPoint) -> CGFloat {
+        return (self - other).magnitude
+    }
+}

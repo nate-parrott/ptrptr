@@ -91,9 +91,10 @@ class CanvasViewController: UIViewController {
         willSet(newVal) {
             let height: CGFloat = 50
             
+            _modalCanvasOverlay = newVal?.modalCanvasOverlay()
+            
             if let bar = newVal {
                 bar.canvasVC = self
-                _modalCanvasOverlay = bar.modalCanvasOverlay()
                 
                 bar.translatesAutoresizingMaskIntoConstraints = true
                 if !_currentEditModeBarTransitionAppearOnTop, let old = _currentEditModeBar {

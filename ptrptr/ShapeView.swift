@@ -23,4 +23,11 @@ class ShapeView: UIView {
     func setup() {
         
     }
+    
+    var transformation: (rotation: CGFloat, scale: CGFloat) = (rotation: 0, scale: 1) {
+        didSet {
+            let (rotation, scale) = transformation
+            transform = CGAffineTransformRotate(CGAffineTransformMakeScale(scale, scale), rotation)
+        }
+    }
 }

@@ -20,7 +20,7 @@ class InsertItemViewController: QuickCollectionModal {
         text.label = NSLocalizedString("Text", comment: "")
         text.action = {
             [weak self] in
-            
+            self!.insertText()
         }
         
         let square = QuickCollectionItem()
@@ -80,7 +80,24 @@ class InsertItemViewController: QuickCollectionModal {
         items = [text, square, circle, image, link, page, counter, sketch]
     }
     
-    func insertShape(paths: [[CGFloat]]) {
+    func insertText() {
+        var json = API.Shared.getJsonForNewShape("text", userIsOwner: parent.canvasView!.userIsOwner)
+        json["text"] = "your text here"
+        json["color"] = API.Shared.userColor
+        let center = parent.canvasView!.coordinateSpace.convertPoint(parent.canvasView!.bounds.center, fromCoordinateSpace: parent.canvasView!)
+        json["x"] = center.x
+        json["y"] = center.y
+        json["width"] = 250
+        json["height"] = 160
+        let shapeFirebase = parent.canvas.childByAppendingPath("shapes").childByAutoId()
+        parent.transactionStack.doTransaction(CMTransaction(target: nil, action: { (_) -> Void in
+            shapeFirebase.setValue(json)
+            }, undo: { (_) -> Void in
+                shapeFirebase.setValue(nil)
+        }))
+    }
+    
+    func insertShape(paths: [[CGFloat]], additionalJson: [String: AnyObject]?=nil) {
         var json = API.Shared.getJsonForNewShape("path", userIsOwner: parent.canvasView!.userIsOwner)
         json["paths"] = paths
         let center = parent.canvasView!.coordinateSpace.convertPoint(parent.canvasView!.bounds.center, fromCoordinateSpace: parent.canvasView!)

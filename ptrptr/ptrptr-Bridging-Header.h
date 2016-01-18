@@ -7,3 +7,4 @@
 #import "RGB-HSV.h"
 #import "CMWindow.h"
 #import "CMTransaction.h"
+#import "SelectionIndicatorView.h"

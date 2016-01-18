@@ -34,7 +34,7 @@ struct Shapes {
         if let x = shape["x"] as? CGFloat, let y = shape["y"] as? CGFloat {
             view.center = ctx.coordinateSpace.convertPoint(CGPointMake(x, y), toCoordinateSpace: ctx.coordinateSpace.view)
         }
-        view.transform = CGAffineTransformScale(CGAffineTransformMakeRotation(rotation * CGFloat(M_PI) / 180.0), scale, scale)
+        view.transformation = (rotation: rotation, scale: scale)
         return view
     }
     

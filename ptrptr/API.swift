@@ -128,7 +128,7 @@ class API: NSObject {
         } else {
             print("Tried creating shape, but no user data available for self")
         }
-        json["z"] = userIsOwner ? 100 : 1
+        json["z"] = userIsOwner ? 10000 : 1
         return json
     }
     

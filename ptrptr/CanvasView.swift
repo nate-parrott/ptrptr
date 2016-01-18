@@ -21,9 +21,13 @@ class CanvasView: ShapesView {
         _valueObserverToken = canvas.observeEventType(.Value) { [weak self] (snapshot: FDataSnapshot?) -> Void in
             self!._value = snapshot?.value as? [String: AnyObject]
         }
+        _setupGestures()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    deinit {
+        self.canvas.removeObserverWithHandle(_valueObserverToken!)
     }
     let canvas: Firebase!
     var _valueObserverToken: UInt?
@@ -43,9 +47,6 @@ class CanvasView: ShapesView {
     
     // MARK: Delegate
     @IBOutlet var delegate: CanvasViewDelegate!
-    
-    // MARK: Selection
-    var selection = [Firebase]()
     
     // MARK: Render loop
     var _renderingActive = false {
@@ -70,7 +71,56 @@ class CanvasView: ShapesView {
         if _needsRender {
             if let shapeDict = _value?["shapes"] as? [String: Shape] {
                 render(Shapes.convertShapeDictToArray(shapeDict))
+                let selectedShapeViews = selectionIDs.map({ self._viewsByID[$0] }).filter({ $0 != nil }).map({ $0! })
+                _drawSelectionIndicators(selectedShapeViews)
                 _needsRender = false
+            }
+        }
+    }
+    
+    // MARK: Selection
+    var selectionIDs = [String]() {
+        didSet {
+            _needsRender = true
+        }
+    }
+    var _selectionIndicatorViews = [SelectionIndicatorView]()
+    func _drawSelectionIndicators(views: [ShapeView]) {
+        while _selectionIndicatorViews.count < views.count {
+            _selectionIndicatorViews.append(SelectionIndicatorView())
+            addSubview(_selectionIndicatorViews.last!)
+        }
+        while _selectionIndicatorViews.count > views.count {
+            _selectionIndicatorViews.last!.removeFromSuperview()
+            _selectionIndicatorViews.removeLast()
+        }
+        for (view, indicator) in zip(views, _selectionIndicatorViews) {
+            indicator.superview!.bringSubviewToFront(indicator)
+            let (rotation, scale) = view.transformation
+            indicator.bounds = CGRectMake(0, 0, view.bounds.size.width * scale, view.bounds.size.width * scale)
+            indicator.transform = CGAffineTransformMakeRotation(rotation)
+            indicator.center = view.center
+        }
+    }
+    
+    func authorForShape(id: String) -> [String: AnyObject]? {
+        if let shapes = _value?["shapes"] as? [String: AnyObject],
+            let shape = shapes[id] as? Shape,
+            let author = shape["author"] as? [String: AnyObject] {
+                return author
+        } else {
+            return nil
+        }
+    }
+    
+    func canMoveShapeWithID(id: String) -> Bool {
+        if let isOwner = userIsOwner where isOwner {
+            return true
+        } else {
+            if let author = authorForShape(id), let authorID = author["id"] as? String {
+                return authorID == API.Shared.uid
+            } else {
+                return false
             }
         }
     }
