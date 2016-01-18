@@ -90,6 +90,7 @@ class InsertItemViewController: QuickCollectionModal {
         json["width"] = 250
         json["height"] = 160
         let shapeFirebase = parent.canvas.childByAppendingPath("shapes").childByAutoId()
+        parent.canvasView!.selectionIDs = [shapeFirebase.lastPathComponent]
         parent.transactionStack.doTransaction(CMTransaction(target: nil, action: { (_) -> Void in
             shapeFirebase.setValue(json)
             }, undo: { (_) -> Void in
@@ -105,6 +106,7 @@ class InsertItemViewController: QuickCollectionModal {
         json["y"] = center.y
         json["fill"] = ["type": "solid", "color": API.Shared.userColor]
         let shapeFirebase = parent.canvas.childByAppendingPath("shapes").childByAutoId()
+        parent.canvasView!.selectionIDs = [shapeFirebase.lastPathComponent]
         parent.transactionStack.doTransaction(CMTransaction(target: nil, action: { (_) -> Void in
             shapeFirebase.setValue(json)
             }, undo: { (_) -> Void in
