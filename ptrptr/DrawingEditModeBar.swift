@@ -47,6 +47,7 @@ class _SketchOverlayView: UIView {
             }
             self?.paths = oldPaths
         })
+        editBar.canvasVC.transactionStack.doTransaction(_transaction)
         paths.append([])
         _appendTouchPoint(touches.first!)
     }

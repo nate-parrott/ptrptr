@@ -13,7 +13,7 @@ import Firebase
     
 }
 
-class CanvasView: ShapesView {
+class CanvasView: ShapesView, UIGestureRecognizerDelegate {
     // MARK: Lifecycle
     init(canvas: Firebase) {
         self.canvas = canvas
@@ -30,6 +30,7 @@ class CanvasView: ShapesView {
         self.canvas.removeObserverWithHandle(_valueObserverToken!)
     }
     let canvas: Firebase!
+    var transactionStack: CMTransactionStack!
     var _valueObserverToken: UInt?
     var _value: [String: AnyObject]? {
         didSet {
@@ -111,6 +112,14 @@ class CanvasView: ShapesView {
         } else {
             return nil
         }
+    }
+    
+    // MARK: Moving
+    
+    var _movingTransaction: _MovingTransaction?
+    
+    var _shapeToMove: String? {
+        return selectionIDs.filter({ self.canMoveShapeWithID($0) }).first
     }
     
     func canMoveShapeWithID(id: String) -> Bool {

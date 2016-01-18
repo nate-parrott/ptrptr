@@ -42,6 +42,7 @@ class CanvasViewController: UIViewController {
                 old.removeFromSuperview()
             }
             if let n = new {
+                n.transactionStack = transactionStack
                 view.insertSubview(n, atIndex: 0)
                 n.translatesAutoresizingMaskIntoConstraints = false
                 let a = topLayoutGuide.bottomAnchor.constraintEqualToAnchor(n.topAnchor)

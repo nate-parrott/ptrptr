@@ -89,7 +89,9 @@ NSString * const CMTransactionStackDidExecuteTransactionNotification = @"CMTrans
         [self.redoStack removeAllObjects];
         self.canRedo = NO;
     }
-    transaction.action(transaction.target);
+    if (transaction.action) {
+        transaction.action(transaction.target);
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:CMTransactionStackDidExecuteTransactionNotification object:self];
 }
 
