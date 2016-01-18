@@ -9,7 +9,7 @@
 import UIKit
 
 class EditModeBar: UIView {
-    weak var canvasVC: CanvasViewController?
+    weak var canvasVC: CanvasViewController!
     
     func modalCanvasOverlay() -> UIView? {
         return nil

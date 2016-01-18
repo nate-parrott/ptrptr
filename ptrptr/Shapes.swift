@@ -42,8 +42,16 @@ struct Shapes {
         var view = (existingView as? PathShapeView) ?? PathShapeView()
         view = renderBase(shape, existingView: view, ctx: ctx) as! PathShapeView
         
-        let path = shape["path"] as? [CGFloat] ?? []
-        view.setPathAndFrame(path, inCoordinateSpace: ctx.coordinateSpace)
+        var paths = [[CGFloat]]()
+        if let pathArrays = shape["paths"] as? [AnyObject] {
+            for pathArray in pathArrays {
+                if let points = pathArray as? [CGFloat] {
+                    paths.append(points)
+                }
+            }
+        }
+        let offset = CGPointMake(shape["x"] as? CGFloat ?? 0, shape["y"] as? CGFloat ?? 0)
+        view.setPathsAndFrame(paths, inCoordinateSpace: ctx.coordinateSpace, offset: offset)
         
         var strokeColor: UIColor?
         var strokeWidth: CGFloat = 0

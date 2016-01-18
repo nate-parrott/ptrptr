@@ -30,12 +30,16 @@ class CanvasView: ShapesView {
     var _value: [String: AnyObject]? {
         didSet {
             _needsRender = true
-            
             if let v = _value, width = v["width"] as? CGFloat, height = v["height"] as? CGFloat {
                 coordinateSpace.size = CGSizeMake(width, height)
             }
+            
+            if let v = _value, let ownerID = v["owner"] as? String, let uid = API.Shared.uid {
+                userIsOwner = (ownerID == uid)
+            }
         }
     }
+    var userIsOwner: Bool!
     
     // MARK: Delegate
     @IBOutlet var delegate: CanvasViewDelegate!

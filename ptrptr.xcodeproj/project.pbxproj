@@ -27,6 +27,8 @@
 		5F1582281C4B8942009CC42E /* FeedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582271C4B8942009CC42E /* FeedCellView.swift */; };
 		5F15822A1C4C335F009CC42E /* EditModeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582291C4C335F009CC42E /* EditModeBar.swift */; };
 		5F15822C1C4C3482009CC42E /* DrawingEditModeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F15822B1C4C3482009CC42E /* DrawingEditModeBar.swift */; };
+		5F1582321C4C9EF6009CC42E /* CMTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582311C4C9EF6009CC42E /* CMTransaction.m */; };
+		5F1582351C4C9F04009CC42E /* CMWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1582341C4C9F04009CC42E /* CMWindow.m */; };
 		5F80016C1C474F1E00183BA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F80016B1C474F1E00183BA4 /* AppDelegate.swift */; };
 		5F8001711C474F1E00183BA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F80016F1C474F1E00183BA4 /* Main.storyboard */; };
 		5F8001731C474F1E00183BA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F8001721C474F1E00183BA4 /* Assets.xcassets */; };
@@ -66,6 +68,10 @@
 		5F1582271C4B8942009CC42E /* FeedCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCellView.swift; sourceTree = "<group>"; };
 		5F1582291C4C335F009CC42E /* EditModeBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditModeBar.swift; sourceTree = "<group>"; };
 		5F15822B1C4C3482009CC42E /* DrawingEditModeBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingEditModeBar.swift; sourceTree = "<group>"; };
+		5F1582301C4C9EF6009CC42E /* CMTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMTransaction.h; sourceTree = "<group>"; };
+		5F1582311C4C9EF6009CC42E /* CMTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMTransaction.m; sourceTree = "<group>"; };
+		5F1582331C4C9F04009CC42E /* CMWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMWindow.h; sourceTree = "<group>"; };
+		5F1582341C4C9F04009CC42E /* CMWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMWindow.m; sourceTree = "<group>"; };
 		5F8001681C474F1E00183BA4 /* ptrptr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ptrptr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F80016B1C474F1E00183BA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F8001701C474F1E00183BA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -180,6 +186,10 @@
 				5F80016B1C474F1E00183BA4 /* AppDelegate.swift */,
 				5F80018B1C48A5CA00183BA4 /* API.swift */,
 				5F80016F1C474F1E00183BA4 /* Main.storyboard */,
+				5F1582301C4C9EF6009CC42E /* CMTransaction.h */,
+				5F1582311C4C9EF6009CC42E /* CMTransaction.m */,
+				5F1582331C4C9F04009CC42E /* CMWindow.h */,
+				5F1582341C4C9F04009CC42E /* CMWindow.m */,
 				5F15822F1C4C3615009CC42E /* Onboarding */,
 				5F15822D1C4C35F2009CC42E /* Canvas */,
 				5F15822E1C4C3604009CC42E /* Shapes */,
@@ -329,12 +339,14 @@
 				5F1582261C4B8934009CC42E /* ViewCollection.swift in Sources */,
 				5F1582191C4B5C80009CC42E /* InsertItemViewController.swift in Sources */,
 				5F8001881C47579D00183BA4 /* ShapeView.swift in Sources */,
+				5F1582321C4C9EF6009CC42E /* CMTransaction.m in Sources */,
 				5F1582121C4B4FF8009CC42E /* NetImageView.swift in Sources */,
 				5F1582011C48CF18009CC42E /* Shapes.swift in Sources */,
 				5F1582241C4B6780009CC42E /* KeyboardAvoidance.swift in Sources */,
 				5F15822C1C4C3482009CC42E /* DrawingEditModeBar.swift in Sources */,
 				5F80016C1C474F1E00183BA4 /* AppDelegate.swift in Sources */,
 				5F15821B1C4B611C009CC42E /* OnboardingViewController.swift in Sources */,
+				5F1582351C4C9F04009CC42E /* CMWindow.m in Sources */,
 				5F80017E1C4756ED00183BA4 /* CanvasView.swift in Sources */,
 				5F8001841C47574200183BA4 /* CanvasViewController.swift in Sources */,
 				5F1582071C48F681009CC42E /* PathShapeView.swift in Sources */,

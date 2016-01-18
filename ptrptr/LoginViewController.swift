@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
             if let err = error {
                 print("Facebook: \(err)")
             } else if result.isCancelled {
-                print("Cancalled")
+                print("Cancelled")
             } else {
                 let token = FBSDKAccessToken.currentAccessToken().tokenString
                 API.Shared.firebaseRoot.authWithOAuthProvider("facebook", token: token, withCompletionBlock: { (errorOpt: NSError?, authOpt: FAuthData?) -> Void in

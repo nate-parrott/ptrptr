@@ -85,8 +85,9 @@
         <!--Navigation Controller-->
         <scene sceneID="npc-ON-vcU">
             <objects>
-                <navigationController storyboardIdentifier="FeedNav" navigationBarHidden="YES" id="dpg-WG-8aZ" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fFC-u1-uXI">
+                <navigationController storyboardIdentifier="FeedNav" id="dpg-WG-8aZ" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="fFC-u1-uXI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -98,7 +99,7 @@
             </objects>
             <point key="canvasLocation" x="515" y="797"/>
         </scene>
-        <!--Feed View Controller-->
+        <!--ptrptr 🐾-->
         <scene sceneID="Kzh-bX-KV3">
             <objects>
                 <viewController id="SDa-zw-nht" customClass="FeedViewController" customModule="ptrptr" customModuleProvider="target" sceneMemberID="viewController">
@@ -123,7 +124,7 @@
                             <constraint firstItem="rs2-D7-k7R" firstAttribute="leading" secondItem="2QK-Dd-nfs" secondAttribute="leading" id="uIO-aC-cVv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="q13-Xk-CMe"/>
+                    <navigationItem key="navigationItem" title="ptrptr 🐾" id="q13-Xk-CMe"/>
                     <connections>
                         <outlet property="collection" destination="rs2-D7-k7R" id="Xcn-RP-hAq"/>
                     </connections>
@@ -147,7 +148,14 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZ7-km-cie">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <items/>
+                                <items>
+                                    <barButtonItem image="Back" id="eBA-tN-wOe">
+                                        <connections>
+                                            <action selector="back" destination="6dX-U6-8kL" id="prK-Cb-C32"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVR-J4-2sq">
                                 <rect key="frame" x="135" y="518" width="50" height="50"/>
@@ -156,7 +164,7 @@
                                     <constraint firstAttribute="width" constant="50" id="gT0-Ov-Lbx"/>
                                     <constraint firstAttribute="height" constant="50" id="iP1-Aq-bfY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="39"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="39"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="-4" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="+">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -185,36 +193,32 @@
                     <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXx-7Y-AkK">
-                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3N-9L-uCx">
+                            <rect key="frame" x="266" y="0.0" width="68" height="50"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="50" id="BlB-Rn-Cyn"/>
+                                <constraint firstAttribute="width" constant="68" id="xAN-R9-Aag"/>
                             </constraints>
-                            <state key="normal" image="X"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" title="Done"/>
                             <connections>
-                                <action selector="popEditMode" destination="6dX-U6-8kL" eventType="touchUpInside" id="6HT-bY-WgX"/>
+                                <action selector="confirm" destination="u0M-O9-Ome" eventType="touchUpInside" id="dJz-uV-Umc"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZL-qW-KY9">
-                            <rect key="frame" x="284" y="0.0" width="50" height="50"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="50" id="vkx-a6-H3m"/>
-                            </constraints>
-                            <state key="normal" image="Check"/>
-                            <connections>
-                                <action selector="confirm" destination="u0M-O9-Ome" eventType="touchUpInside" id="clS-sQ-iAw"/>
-                            </connections>
-                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Draw something" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZlQ-vs-Q79">
+                            <rect key="frame" x="125" y="18" width="85" height="14"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" red="0.1333333333" green="0.71764705880000002" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="sXx-7Y-AkK" secondAttribute="bottom" id="JZy-e1-o2g"/>
-                        <constraint firstAttribute="trailing" secondItem="gZL-qW-KY9" secondAttribute="trailing" id="UjI-iS-BKA"/>
-                        <constraint firstItem="sXx-7Y-AkK" firstAttribute="leading" secondItem="u0M-O9-Ome" secondAttribute="leading" id="gTT-ZO-zgK"/>
-                        <constraint firstAttribute="bottom" secondItem="gZL-qW-KY9" secondAttribute="bottom" id="ggR-zc-eLk"/>
-                        <constraint firstItem="sXx-7Y-AkK" firstAttribute="top" secondItem="u0M-O9-Ome" secondAttribute="top" id="iPK-fS-WpZ"/>
-                        <constraint firstItem="gZL-qW-KY9" firstAttribute="top" secondItem="u0M-O9-Ome" secondAttribute="top" id="umn-ES-ezt"/>
+                        <constraint firstItem="i3N-9L-uCx" firstAttribute="top" secondItem="u0M-O9-Ome" secondAttribute="top" id="IjI-yH-8eC"/>
+                        <constraint firstItem="ZlQ-vs-Q79" firstAttribute="centerY" secondItem="u0M-O9-Ome" secondAttribute="centerY" id="K4z-4n-eKy"/>
+                        <constraint firstAttribute="bottom" secondItem="i3N-9L-uCx" secondAttribute="bottom" id="Yni-GB-9W4"/>
+                        <constraint firstAttribute="trailing" secondItem="i3N-9L-uCx" secondAttribute="trailing" id="kt8-6k-zDM"/>
+                        <constraint firstItem="ZlQ-vs-Q79" firstAttribute="centerX" secondItem="u0M-O9-Ome" secondAttribute="centerX" id="niB-mm-v7i"/>
                     </constraints>
                 </view>
             </objects>
@@ -349,7 +353,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Check" width="32" height="22"/>
-        <image name="X" width="23" height="23"/>
+        <image name="Back" width="27" height="22"/>
     </resources>
 </document>

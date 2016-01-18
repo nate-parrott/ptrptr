@@ -35,6 +35,25 @@ class API: NSObject {
     }
     var _userPathChangeObserver: UInt?
     var userSnapshot: FDataSnapshot?
+    var user: User! {
+        get {
+            if let snapshot = userSnapshot, let user = snapshot.value as? User {
+                return user
+            } else {
+                return nil
+            }
+        }
+    }
+    var userColor: [CGFloat]! {
+        get {
+            return user?["color"] as? [CGFloat]
+        }
+    }
+    var uid: String! {
+        get {
+            return firebaseRoot.authData?.uid
+        }
+    }
     
     // MARK: Assets
     let _servicesURL = "https://surfboard-services.appspot.com"
@@ -90,12 +109,27 @@ class API: NSObject {
         }
         
         return [
-            "width": "\(size.width)",
-            "height": "\(size.height)",
+            "width": size.width,
+            "height": size.height,
             "owner": firebaseRoot.authData.uid,
             "zones": zones,
             "modified": timestampString()
         ]
+    }
+    
+    func getJsonForNewShape(type: String, userIsOwner: Bool) -> [String: AnyObject] {
+        var json = [String: AnyObject]()
+        json["type"] = type
+        if let user = userSnapshot?.value as? [String: AnyObject],
+            let color = user["color"] as? [CGFloat],
+            let name = user["name"] as? String,
+            let id = firebaseRoot.authData?.uid {
+            json["author"] = ["color": color, "name": name, "id": id]
+        } else {
+            print("Tried creating shape, but no user data available for self")
+        }
+        json["z"] = userIsOwner ? 100 : 1
+        return json
     }
     
     // MARK: Utils

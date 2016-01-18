@@ -21,6 +21,16 @@ class CanvasViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         toolbar.setBackgroundImage(UIImage(named: "Black"), forToolbarPosition: .Any, barMetrics: .Default)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "_transactionHappened:", name: CMTransactionStackDidExecuteTransactionNotification, object: transactionStack)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    @IBAction func back() {
+        navigationController!.popViewControllerAnimated(true)
     }
     
     // MARK: Views
@@ -55,6 +65,12 @@ class CanvasViewController: UIViewController {
         _editModeBarStack.append(drawingModeBar)
     }
     
+    // MARK: Transactions
+    let transactionStack = CMTransactionStack()
+    func _transactionHappened(notif: NSNotification) {
+        canvas.childByAppendingPath("modified").setValue(API.Shared.timestampString())
+    }
+
     // MARK: Layout
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

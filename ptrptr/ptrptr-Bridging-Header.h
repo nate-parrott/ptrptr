@@ -5,3 +5,5 @@
 #import "NSAttributedString+ResizeToFit.h"
 #import "QuickCollectionModal.h"
 #import "RGB-HSV.h"
+#import "CMWindow.h"
+#import "CMTransaction.h"

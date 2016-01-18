@@ -34,15 +34,17 @@ class PathShapeView: ShapeView {
         _fillView?.frame = bounds
     }
     
-    func setPathAndFrame(path: [CGFloat], inCoordinateSpace: ShapesView.CoordinateSpace) {
+    func setPathsAndFrame(paths: [[CGFloat]], inCoordinateSpace: ShapesView.CoordinateSpace, offset: CGPoint) {
         // this layer will be scaled automatically to fit the space; we just need to set the correct center position
         let bezier = UIBezierPath()
-        for i in 0..<(path.count/2) {
-            let pt = CGPointMake(path[i*2], path[i*2+1])
-            if i == 0 {
-                bezier.moveToPoint(pt)
-            } else {
-                bezier.addLineToPoint(pt)
+        for path in paths {
+            for i in 0..<(path.count/2) {
+                let pt = CGPointMake(path[i*2], path[i*2+1])
+                if i == 0 {
+                    bezier.moveToPoint(pt)
+                } else {
+                    bezier.addLineToPoint(pt)
+                }
             }
         }
         let pathBounds = bezier.bounds
@@ -52,7 +54,7 @@ class PathShapeView: ShapeView {
         _strokeShapeView.shapeLayer.path = cgPath
         _fillMaskShapeView.shapeLayer.path = cgPath
         
-        center = inCoordinateSpace.convertPoint(pathBounds.center, toCoordinateSpace: inCoordinateSpace.view)
+        center = inCoordinateSpace.convertPoint(pathBounds.center + offset, toCoordinateSpace: inCoordinateSpace.view)
         bounds = CGRectMake(0, 0, pathBounds.size.width, pathBounds.size.height)
     }
     
@@ -108,9 +110,8 @@ class PathShapeView: ShapeView {
     
     var stroke: (UIColor?, CGFloat) = (nil, 0) {
         didSet {
-            _strokeShapeView.shapeLayer.fillColor = stroke.0?.CGColor
+            _strokeShapeView.shapeLayer.strokeColor = stroke.0?.CGColor
             _strokeShapeView.shapeLayer.lineWidth = stroke.1
-            _strokeShapeView.hidden = (stroke.0 == nil || stroke.1 == 0)
         }
     }
 }

@@ -16,6 +16,7 @@ class FeedViewController: UIViewController {
     // MARK: Lifecycle:
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
         API.Shared.checkIfOnboardingComplete { (resultOpt) -> () in
             if let result = resultOpt {
                 if !result {
