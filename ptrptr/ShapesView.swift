@@ -9,8 +9,17 @@
 import UIKit
 
 class ShapesView: UIView {
+    // MARK: Render loop
+    
+    var shapes = [String: Shape]() {
+        didSet {
+            _needsRender = true
+        }
+    }
+    
     var _viewsByID = [String: ShapeView]()
-    func render(shapes: [(String, Shape)]) {
+    func render() {
+        let shapes = Shapes.convertShapeDictToArray(self.shapes)
         for (id, shape) in shapes {
             if let user = shape["author"] as? User {
                 let existingOpt: ShapeView? = _viewsByID[id]
@@ -39,6 +48,42 @@ class ShapesView: UIView {
             }
         }
     }
+    
+    var _renderingActive = false {
+        didSet {
+            if _renderingActive && _displayLink == nil {
+                _displayLink = CADisplayLink(target: self, selector: "_displayLinkCallback:")
+                _displayLink!.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
+            } else if !_renderingActive && _displayLink != nil {
+                _displayLink!.invalidate()
+                _displayLink = nil
+            }
+        }
+    }
+    var _needsRender = false
+    var _lastRenderedAtBounds = CGRectZero
+    override var bounds: CGRect {
+        didSet {
+            if bounds != _lastRenderedAtBounds {
+                _needsRender = true
+            }
+        }
+    }
+    var _displayLink: CADisplayLink?
+    override func willMoveToWindow(newWindow: UIWindow?) {
+        super.willMoveToWindow(newWindow)
+        _renderingActive = (newWindow != nil)
+    }
+    
+    func _displayLinkCallback(sender: CADisplayLink) {
+        if _needsRender {
+            render()
+            _needsRender = false
+            _lastRenderedAtBounds = bounds
+        }
+    }
+    
+    // MARK: Coordinates
     
     class CoordinateSpace: NSObject, UICoordinateSpace {
         init(view: UIView) {

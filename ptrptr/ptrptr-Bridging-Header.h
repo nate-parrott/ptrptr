@@ -8,3 +8,4 @@
 #import "CMWindow.h"
 #import "CMTransaction.h"
 #import "SelectionIndicatorView.h"
+#import "UIBarButtonItem+BorderedButton.h"

@@ -43,6 +43,7 @@
 		5FE7D29E1C4CEC6500DE424A /* ShapesView+HitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7D29D1C4CEC6500DE424A /* ShapesView+HitTest.swift */; };
 		5FE7D2A01C4D932B00DE424A /* CanvasView+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7D29F1C4D932B00DE424A /* CanvasView+Gestures.swift */; };
 		5FE7D2A21C4DAF9A00DE424A /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7D2A11C4DAF9A00DE424A /* FirebaseUtils.swift */; };
+		5FE7D2A51C4DFF7800DE424A /* UIBarButtonItem+BorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7D2A41C4DFF7800DE424A /* UIBarButtonItem+BorderedButton.m */; };
 		ED81CDA6D1D43439EA983C8A /* Pods_ptrptr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC6E2981E8BEFEDE4408EFB /* Pods_ptrptr.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +94,8 @@
 		5FE7D29D1C4CEC6500DE424A /* ShapesView+HitTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShapesView+HitTest.swift"; sourceTree = "<group>"; };
 		5FE7D29F1C4D932B00DE424A /* CanvasView+Gestures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CanvasView+Gestures.swift"; sourceTree = "<group>"; };
 		5FE7D2A11C4DAF9A00DE424A /* FirebaseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
+		5FE7D2A31C4DFF7800DE424A /* UIBarButtonItem+BorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+BorderedButton.h"; sourceTree = "<group>"; };
+		5FE7D2A41C4DFF7800DE424A /* UIBarButtonItem+BorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+BorderedButton.m"; sourceTree = "<group>"; };
 		8AC6E2981E8BEFEDE4408EFB /* Pods_ptrptr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ptrptr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C07CFBD98ACE4A8349238B98 /* Pods-ptrptr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ptrptr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ptrptr/Pods-ptrptr.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +129,8 @@
 				5F15821C1C4B612F009CC42E /* HueSlider.swift */,
 				5F15821E1C4B6145009CC42E /* Pixel.swift */,
 				5FE7D2A11C4DAF9A00DE424A /* FirebaseUtils.swift */,
+				5FE7D2A31C4DFF7800DE424A /* UIBarButtonItem+BorderedButton.h */,
+				5FE7D2A41C4DFF7800DE424A /* UIBarButtonItem+BorderedButton.m */,
 				5F1582151C4B5B72009CC42E /* QuickCollectionModal.h */,
 				5F1582161C4B5B72009CC42E /* QuickCollectionModal.m */,
 				5F1582111C4B4FF8009CC42E /* NetImageView.swift */,
@@ -349,6 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FE7D2A51C4DFF7800DE424A /* UIBarButtonItem+BorderedButton.m in Sources */,
 				5FE7D2A21C4DAF9A00DE424A /* FirebaseUtils.swift in Sources */,
 				5F80018A1C4759E900183BA4 /* LoginViewController.swift in Sources */,
 				5F1582261C4B8934009CC42E /* ViewCollection.swift in Sources */,

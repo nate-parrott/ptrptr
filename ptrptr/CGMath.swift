@@ -40,8 +40,8 @@ func ==(lhs: CGSize, rhs: CGSize) -> Bool {
     return lhs.width == rhs.width && lhs.height == rhs.height
 }
 
-func !=(lhs: CGSize, rhs: CGSize) -> Bool {
-    return !(lhs == rhs)
+func ==(lhs: CGPoint, rhs: CGPoint) -> Bool {
+    return lhs.x == rhs.x && lhs.y == rhs.y
 }
 
 extension CGPoint {
@@ -58,4 +58,8 @@ extension CGPoint {
     func distanceFrom(other: CGPoint) -> CGFloat {
         return (self - other).magnitude
     }
+}
+
+func ==(lhs: CGRect, rhs: CGRect) -> Bool {
+    return lhs.origin == rhs.origin && lhs.size == rhs.size
 }

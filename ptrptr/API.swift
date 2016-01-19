@@ -90,14 +90,14 @@ class API: NSObject {
     }
     
     // MARK: Canvas
-    let aspectRatioForFeedZone: CGFloat = 0.5
+    let aspectRatioForFeedZone: CGFloat = 0.3
     
     func getJsonForNewCanvas(isUserProfile: Bool) -> [String: AnyObject] {
         var size = UIScreen.mainScreen().bounds.size
         size.height -= 44
         
         var zones = [String: AnyObject]()
-        let margin: CGFloat = 10
+        let margin: CGFloat = 0
         if isUserProfile {
             let feedWidth = (size.width - margin*2)
             let feedHeight = feedWidth * aspectRatioForFeedZone
