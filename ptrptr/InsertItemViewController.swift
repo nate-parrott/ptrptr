@@ -14,7 +14,7 @@ class InsertItemViewController: QuickCollectionModal {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let size: CGFloat = 100
+        let size: CGFloat = 50
         
         let text = QuickCollectionItem()
         text.label = NSLocalizedString("Text", comment: "")

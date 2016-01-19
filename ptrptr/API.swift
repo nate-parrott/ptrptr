@@ -28,7 +28,7 @@ class API: NSObject {
     private(set) var userPath: Firebase? {
         willSet(newVal) {
             userPath?.removeAllObservers()
-            newVal?.observeSingleEventOfType(.Value, withBlock: { [weak self] (let snapshotOpt: FDataSnapshot?) -> Void in
+            newVal?.observeEventType(.Value, withBlock: { [weak self] (let snapshotOpt: FDataSnapshot?) -> Void in
                 self!.userSnapshot = snapshotOpt
             })
         }

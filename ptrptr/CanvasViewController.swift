@@ -23,7 +23,14 @@ class CanvasViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         toolbar.setBackgroundImage(UIImage(named: "Black"), forToolbarPosition: .Any, barMetrics: .Default)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "_transactionHappened:", name: CMTransactionStackDidExecuteTransactionNotification, object: transactionStack)
+        
+        API.Shared.userPath!.childByAppendingPath("color").observeSingleEventOfType(.Value) { [weak self] (let snapshotOpt: FDataSnapshot?) -> Void in
+            if let color = snapshotOpt?.value as? [CGFloat] where color.count == 4 {
+                self?.addButton.backgroundColor = UIColor(red: color[0], green: color[1], blue: color[2], alpha: color[3])
+            }
+        }
     }
+    @IBOutlet var addButton: UIButton!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -32,6 +39,10 @@ class CanvasViewController: UIViewController {
     
     @IBAction func back() {
         navigationController!.popViewControllerAnimated(true)
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     // MARK: Views

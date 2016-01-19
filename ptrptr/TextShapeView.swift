@@ -90,7 +90,7 @@ class TextShapeView: ShapeView, UITextViewDelegate {
     }
     
     func textViewDidEndEditing(textView: UITextView) {
-        _editingTransaction!.finalized = true
+        _editingTransaction?.finalized = true
         _editingTransaction = nil
     }
     
@@ -100,5 +100,10 @@ class TextShapeView: ShapeView, UITextViewDelegate {
         } else {
             return nil
         }
+    }
+    
+    override func doubleClicked() -> Bool {
+        _textView.becomeFirstResponder()
+        return true
     }
 }

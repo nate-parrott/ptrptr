@@ -90,7 +90,7 @@ class ShapesView: UIView {
             self.view = view
             super.init()
         }
-        let view: UIView
+        weak var view: UIView!
         var size: CGSize = CGSizeMake(1000, 1000)
         var bounds: CGRect {
             get {
@@ -134,7 +134,7 @@ class ShapesView: UIView {
     lazy var coordinateSpace: CoordinateSpace = {
         return CoordinateSpace(view: self)
     }()
-    
+        
     struct RenderContext {
         let coordinateSpace: CoordinateSpace
         let colorFunc: [CGFloat] -> UIColor // parses and enforces color constraints

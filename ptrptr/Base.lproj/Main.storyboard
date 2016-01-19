@@ -90,6 +90,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="fFC-u1-uXI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.27450980390000002" green="0.87450980389999999" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -128,7 +129,9 @@
                             <constraint firstItem="rs2-D7-k7R" firstAttribute="leading" secondItem="2QK-Dd-nfs" secondAttribute="leading" id="uIO-aC-cVv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="ptrptr 🐾" id="q13-Xk-CMe"/>
+                    <navigationItem key="navigationItem" title="ptrptr 🐾" id="q13-Xk-CMe">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Hev-eb-bv6"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="collection" destination="rs2-D7-k7R" id="Xcn-RP-hAq"/>
                     </connections>
@@ -163,7 +166,7 @@
                             </toolbar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVR-J4-2sq">
                                 <rect key="frame" x="135" y="518" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.27450980390000002" green="0.87450980389999999" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.67936027489999995" green="0.67936027489999995" blue="0.67936027489999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="gT0-Ov-Lbx"/>
                                     <constraint firstAttribute="height" constant="50" id="iP1-Aq-bfY"/>
@@ -188,6 +191,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="iVR-J4-2sq" id="HbD-ZY-QdP"/>
                         <outlet property="drawingModeBar" destination="u0M-O9-Ome" id="QP0-cE-EYF"/>
                         <outlet property="toolbar" destination="CZ7-km-cie" id="T59-l4-w15"/>
                     </connections>

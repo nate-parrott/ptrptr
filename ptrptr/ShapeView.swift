@@ -34,4 +34,8 @@ class ShapeView: UIView {
             transform = CGAffineTransformRotate(CGAffineTransformMakeScale(scale, scale), rotation)
         }
     }
+    
+    func doubleClicked() -> Bool {
+        return false
+    }
 }

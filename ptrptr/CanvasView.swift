@@ -128,4 +128,12 @@ class CanvasView: ShapesView, UIGestureRecognizerDelegate {
             }
         }
     }
+    
+    func canEditShapeWithID(id: String) -> Bool {
+        if let author = authorForShape(id), let authorID = author["id"] as? String {
+            return authorID == API.Shared.uid
+        } else {
+            return false
+        }
+    }
 }

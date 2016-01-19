@@ -10,11 +10,14 @@ import UIKit
 
 extension CanvasView {
     func _setupGestures() {
+        let doubleTap = UITapGestureRecognizer(target: self, action: "_doubleTapped:")
+        doubleTap.numberOfTapsRequired = 2
         let recs = [
             UITapGestureRecognizer(target: self, action: "_tapped:"),
             UIPinchGestureRecognizer(target: self, action: "_pinched:"),
             UIPanGestureRecognizer(target: self, action: "_panned:"),
-            UIRotationGestureRecognizer(target: self, action: "_rotated:")
+            UIRotationGestureRecognizer(target: self, action: "_rotated:"),
+            doubleTap
         ]
         for rec in recs {
             rec.delegate = self
@@ -50,9 +53,17 @@ extension CanvasView {
         }
         return _movingTransaction != nil
     }
+    func _doubleTapped(rec: UIGestureRecognizer) {
+        if rec.state == .Recognized {
+            if let shapeID = selectionIDs.first where canEditShapeWithID(shapeID), let view = _viewsByID[shapeID] {
+                view.doubleClicked()
+            }
+        }
+    }
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         let eitherAreTapRecs = (gestureRecognizer as? UITapGestureRecognizer) != nil || (otherGestureRecognizer as? UITapGestureRecognizer) != nil
-        return !eitherAreTapRecs
+        let bothAreTapRecs = (gestureRecognizer as? UITapGestureRecognizer) != nil && (otherGestureRecognizer as? UITapGestureRecognizer) != nil
+        return !eitherAreTapRecs || bothAreTapRecs
     }
     func _tapped(rec: UITapGestureRecognizer) {
         if rec.state == .Recognized {
