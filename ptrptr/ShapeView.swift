@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ShapeView: UIView {
     var _id: String!
@@ -37,5 +38,17 @@ class ShapeView: UIView {
     
     func doubleClicked() -> Bool {
         return false
+    }
+    
+    func doubleClickActionName() -> String? {
+        return nil
+    }
+    
+    func shapeOptions() -> [ShapeOption] {
+        let delete = ShapeOption(title: NSLocalizedString("Delete", comment: ""), action: {
+            (let view: ShapeView, let firebase: Firebase, let canvasVC: CanvasViewController) -> () in
+            firebase.setValue(nil)
+        })
+        return [delete]
     }
 }

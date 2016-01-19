@@ -44,6 +44,8 @@
 		5FE7D2A01C4D932B00DE424A /* CanvasView+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7D29F1C4D932B00DE424A /* CanvasView+Gestures.swift */; };
 		5FE7D2A21C4DAF9A00DE424A /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7D2A11C4DAF9A00DE424A /* FirebaseUtils.swift */; };
 		5FE7D2A51C4DFF7800DE424A /* UIBarButtonItem+BorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7D2A41C4DFF7800DE424A /* UIBarButtonItem+BorderedButton.m */; };
+		5FE7D2A71C4E231A00DE424A /* ShapeOptionsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7D2A61C4E231A00DE424A /* ShapeOptionsBar.swift */; };
+		5FE7D2A91C4E30E000DE424A /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7D2A81C4E30E000DE424A /* GradientView.swift */; };
 		ED81CDA6D1D43439EA983C8A /* Pods_ptrptr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC6E2981E8BEFEDE4408EFB /* Pods_ptrptr.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +98,8 @@
 		5FE7D2A11C4DAF9A00DE424A /* FirebaseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
 		5FE7D2A31C4DFF7800DE424A /* UIBarButtonItem+BorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+BorderedButton.h"; sourceTree = "<group>"; };
 		5FE7D2A41C4DFF7800DE424A /* UIBarButtonItem+BorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+BorderedButton.m"; sourceTree = "<group>"; };
+		5FE7D2A61C4E231A00DE424A /* ShapeOptionsBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeOptionsBar.swift; sourceTree = "<group>"; };
+		5FE7D2A81C4E30E000DE424A /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		8AC6E2981E8BEFEDE4408EFB /* Pods_ptrptr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ptrptr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C07CFBD98ACE4A8349238B98 /* Pods-ptrptr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ptrptr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ptrptr/Pods-ptrptr.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +161,7 @@
 				5F15822B1C4C3482009CC42E /* DrawingEditModeBar.swift */,
 				5F1582361C4CE7BC009CC42E /* SelectionIndicatorView.h */,
 				5F1582371C4CE7BC009CC42E /* SelectionIndicatorView.m */,
+				5FE7D2A61C4E231A00DE424A /* ShapeOptionsBar.swift */,
 			);
 			name = Canvas;
 			sourceTree = "<group>";
@@ -215,6 +220,7 @@
 				5F8001851C47576200183BA4 /* FeedViewController.swift */,
 				5F1582231C4B6780009CC42E /* KeyboardAvoidance.swift */,
 				5F1582271C4B8942009CC42E /* FeedCellView.swift */,
+				5FE7D2A81C4E30E000DE424A /* GradientView.swift */,
 				5F1582101C49A3E9009CC42E /* Utils */,
 				5F8001721C474F1E00183BA4 /* Assets.xcassets */,
 				5F8001741C474F1E00183BA4 /* LaunchScreen.storyboard */,
@@ -364,6 +370,7 @@
 				5F1582121C4B4FF8009CC42E /* NetImageView.swift in Sources */,
 				5F1582011C48CF18009CC42E /* Shapes.swift in Sources */,
 				5F1582241C4B6780009CC42E /* KeyboardAvoidance.swift in Sources */,
+				5FE7D2A71C4E231A00DE424A /* ShapeOptionsBar.swift in Sources */,
 				5FE7D2A01C4D932B00DE424A /* CanvasView+Gestures.swift in Sources */,
 				5F15822C1C4C3482009CC42E /* DrawingEditModeBar.swift in Sources */,
 				5F1582381C4CE7BC009CC42E /* SelectionIndicatorView.m in Sources */,
@@ -379,6 +386,7 @@
 				5F1582091C48F9E0009CC42E /* Colors.swift in Sources */,
 				5F80018C1C48A5CA00183BA4 /* API.swift in Sources */,
 				5F1582281C4B8942009CC42E /* FeedCellView.swift in Sources */,
+				5FE7D2A91C4E30E000DE424A /* GradientView.swift in Sources */,
 				5F15821F1C4B6145009CC42E /* Pixel.swift in Sources */,
 				5FE7D29E1C4CEC6500DE424A /* ShapesView+HitTest.swift in Sources */,
 				5F1582031C48D735009CC42E /* ShapesView.swift in Sources */,

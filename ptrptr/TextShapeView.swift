@@ -106,4 +106,8 @@ class TextShapeView: ShapeView, UITextViewDelegate {
         _textView.becomeFirstResponder()
         return true
     }
+    
+    override func doubleClickActionName() -> String? {
+        return NSLocalizedString("Double-click to edit text", comment: "")
+    }
 }

@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 @objc protocol CanvasViewDelegate {
-    
+    func canvasView(view: CanvasView, selectionChanged: Set<String>)
 }
 
 class CanvasView: ShapesView, UIGestureRecognizerDelegate {
@@ -37,6 +37,12 @@ class CanvasView: ShapesView, UIGestureRecognizerDelegate {
     var _value: [String: AnyObject]? {
         didSet {
             shapes = _value?["shapes"] as? [String: Shape] ?? [String: Shape]()
+            
+            let newSelection = Set(selectionIDs.filter({ shapes[$0] != nil }))
+            if newSelection != selectionIDs {
+                selectionIDs = newSelection
+            }
+            
             if let v = _value, width = v["width"] as? CGFloat, height = v["height"] as? CGFloat {
                 coordinateSpace.size = CGSizeMake(width, height)
             }
@@ -75,9 +81,10 @@ class CanvasView: ShapesView, UIGestureRecognizerDelegate {
     @IBOutlet var delegate: CanvasViewDelegate!
     
     // MARK: Selection
-    var selectionIDs = [String]() {
+    var selectionIDs = Set<String>() {
         didSet {
             _needsRender = true
+            delegate.canvasView(self, selectionChanged: selectionIDs)
         }
     }
     var _selectionIndicatorViews = [SelectionIndicatorView]()

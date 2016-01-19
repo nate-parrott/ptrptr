@@ -214,7 +214,7 @@
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Draw something" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZlQ-vs-Q79">
                             <rect key="frame" x="125" y="18" width="85" height="14"/>
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>

@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class CanvasViewController: UIViewController {
+class CanvasViewController: UIViewController, CanvasViewDelegate {
     
     var canvas: Firebase! {
         didSet {
@@ -52,6 +52,7 @@ class CanvasViewController: UIViewController {
         willSet(new) {
             if let old = canvasView {
                 old.removeFromSuperview()
+                old.delegate = nil
             }
             if let n = new {
                 n.transactionStack = transactionStack
@@ -62,6 +63,20 @@ class CanvasViewController: UIViewController {
                 let c = view.widthAnchor.constraintEqualToAnchor(n.widthAnchor)
                 let d = toolbar.topAnchor.constraintEqualToAnchor(n.bottomAnchor)
                 view.addConstraints([a, b, c, d])
+                n.delegate = self
+            }
+        }
+    }
+    
+    // MARK: Canvas delegate
+    func canvasView(view: CanvasView, selectionChanged: Set<String>) {
+        if let id = view.selectionIDs.first, let shapeView = view._viewsByID[id] {
+            _shapeOptionsBar.shapeView = shapeView
+            _shapeOptionsBar.canvasVC = self
+            _editModeBarStack = [_shapeOptionsBar]
+        } else {
+            while _editModeBarStack.indexOf(_shapeOptionsBar) != nil {
+                _editModeBarStack.removeLast()
             }
         }
     }
@@ -99,9 +114,12 @@ class CanvasViewController: UIViewController {
             _currentEditModeBar = newVal.last
         }
     }
+    var _shapeOptionsBar = ShapeOptionsBar()
     var _currentEditModeBarTransitionAppearOnTop = false
     var _currentEditModeBar: EditModeBar? {
         willSet(newVal) {
+            if newVal === _currentEditModeBar { return }
+            
             let height: CGFloat = 50
             
             _modalCanvasOverlay = newVal?.modalCanvasOverlay()

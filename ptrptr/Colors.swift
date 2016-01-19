@@ -60,3 +60,7 @@ extension UIColor {
         }
     }
 }
+
+struct AppColors {
+    static let Emerald = UIColor(red: 0.133, green: 0.718, blue: 0.827, alpha: 1)
+}
