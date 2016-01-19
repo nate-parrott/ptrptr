@@ -93,6 +93,12 @@ class InsertItemViewController: QuickCollectionModal {
         items = [text, square, circle, image, link, page, counter, sketch, emoji, particle]
     }
     
+    func insertedItemWithID(id: String) {
+        delay(0.1) { () -> () in
+            self.parent.canvasView!.selectionIDs = [id]
+        }
+    }
+    
     func insertText() {
         var json = API.Shared.getJsonForNewShape("text", userIsOwner: parent.canvasView!.userIsOwner)
         json["text"] = "your text here"
@@ -102,12 +108,12 @@ class InsertItemViewController: QuickCollectionModal {
         json["y"] = center.y
         json["width"] = 250
         let shapeFirebase = parent.canvas.childByAppendingPath("shapes").childByAutoId()
-        parent.canvasView!.selectionIDs = [shapeFirebase.lastPathComponent]
         parent.transactionStack.doTransaction(CMTransaction(target: nil, action: { (_) -> Void in
             shapeFirebase.setValue(json)
             }, undo: { (_) -> Void in
                 shapeFirebase.setValue(nil)
         }))
+        insertedItemWithID(shapeFirebase.lastPathComponent)
     }
     
     func insertShape(paths: [[CGFloat]], additionalJson: [String: AnyObject]?=nil) {
@@ -118,11 +124,11 @@ class InsertItemViewController: QuickCollectionModal {
         json["y"] = center.y
         json["fill"] = ["type": "solid", "color": API.Shared.userColor]
         let shapeFirebase = parent.canvas.childByAppendingPath("shapes").childByAutoId()
-        parent.canvasView!.selectionIDs = [shapeFirebase.lastPathComponent]
         parent.transactionStack.doTransaction(CMTransaction(target: nil, action: { (_) -> Void in
             shapeFirebase.setValue(json)
             }, undo: { (_) -> Void in
                 shapeFirebase.setValue(nil)
         }))
+        insertedItemWithID(shapeFirebase.lastPathComponent)
     }
 }

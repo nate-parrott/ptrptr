@@ -15,3 +15,12 @@ func backgroundThread(f: dispatch_block_t) {
 func mainThread(f: dispatch_block_t) {
     dispatch_async(dispatch_get_main_queue(), f)
 }
+
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
+}

@@ -43,8 +43,9 @@ class TextShapeView: ShapeView, UITextViewDelegate {
                 let attributed = NSAttributedString(string: string, attributes: [NSFontAttributeName: font, NSForegroundColorAttributeName: color])
                 _textView.attributedText = attributed
                 let size = _textView.sizeThatFits(CGSizeMake(maxWidth, 99999))
-                let scale = maxWidth / max(size.width, 30)
-                bounds = CGRectMake(0, 0, maxWidth, size.height*scale)
+                let width = max(70, size.width)
+                let scale = maxWidth / width // maxWidth is typically 250
+                bounds = CGRectMake(0, 0, size.width*scale, size.height*scale)
                 _textView.transform = CGAffineTransformMakeScale(scale, scale)
                 _textView.center = bounds.center
                 _textView.bounds = CGRectMake(0, 0, size.width, size.height)
@@ -104,6 +105,7 @@ class TextShapeView: ShapeView, UITextViewDelegate {
     
     override func doubleClicked() -> Bool {
         _textView.becomeFirstResponder()
+        _textView.selectedRange = NSMakeRange(0, _textView.text.utf16.count)
         return true
     }
     
