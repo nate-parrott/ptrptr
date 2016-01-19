@@ -96,7 +96,7 @@ NSString * const CMTransactionStackDidExecuteTransactionNotification = @"CMTrans
 }
 
 - (void)_transactionDidUpdate:(CMTransaction *)t {
-    t.action(t.target);
+    if (t.action) t.action(t.target);
     [[NSNotificationCenter defaultCenter] postNotificationName:CMTransactionStackDidExecuteTransactionNotification object:self];
 }
 
