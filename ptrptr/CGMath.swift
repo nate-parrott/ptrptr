@@ -34,6 +34,26 @@ extension CGRect {
             return CGPoint(x: CGRectGetMidX(self), y: CGRectGetMidY(self))
         }
     }
+    var bottom: CGFloat {
+        get {
+            return CGRectGetMaxY(self)
+        }
+    }
+    var right: CGFloat {
+        get {
+            return CGRectGetMaxX(self)
+        }
+    }
+    var left: CGFloat {
+        get {
+            return CGRectGetMinX(self)
+        }
+    }
+    var top: CGFloat {
+        get {
+            return CGRectGetMinY(self)
+        }
+    }
 }
 
 func ==(lhs: CGSize, rhs: CGSize) -> Bool {

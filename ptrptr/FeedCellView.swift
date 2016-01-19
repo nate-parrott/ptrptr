@@ -15,7 +15,14 @@ class FeedCellView: UIView {
             if label.superview == nil {
                 // do some setup:
                 addSubview(label)
-                backgroundColor = UIColor.whiteColor()
+                label.numberOfLines = 0
+                label.backgroundColor = UIColor.whiteColor()
+                
+                addSubview(lastModifiedLabel)
+                lastModifiedLabel.text = "about 2 weeks ago".uppercaseString
+                lastModifiedLabel.font = UIFont.boldSystemFontOfSize(14)
+                lastModifiedLabel.textAlignment = .Right
+                lastModifiedLabel.textColor = UIColor.grayColor()
             }
             label.text = ""
             if let c = canvas {
@@ -26,8 +33,11 @@ class FeedCellView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        label.frame = bounds
+        let padding: CGFloat = 10
+        lastModifiedLabel.frame = CGRectMake(padding, padding, bounds.size.width - padding*2, 14 + padding*2)
+        label.frame = CGRectMake(0, lastModifiedLabel.frame.bottom, bounds.size.width, bounds.size.height - lastModifiedLabel.frame.bottom)
     }
     
     let label = UILabel()
+    let lastModifiedLabel = UILabel()
 }

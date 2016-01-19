@@ -47,6 +47,7 @@ class FeedViewController: UIViewController {
             [weak self] (model: AnyObject) in
             self!.showFriendProfile(model as! String)
         }
+        collection.collectionView.alwaysBounceVertical = true
         // start observing friends:
         _friends = API.Shared.userPath!.childByAppendingPath("friends")
         _friends.observeEventType(.Value) { [weak self] (snapshotOpt: FDataSnapshot?) -> Void in
@@ -82,8 +83,8 @@ class FeedViewController: UIViewController {
         let width = collection.bounds.size.width
         let height = width * API.Shared.aspectRatioForFeedZone
         let layout = collection.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        collection.collectionView.contentInset = UIEdgeInsetsMake(topLayoutGuide.length + 15, 0, bottomLayoutGuide.length + 15, 0)
+        collection.collectionView.contentInset = UIEdgeInsetsMake(topLayoutGuide.length, 0, bottomLayoutGuide.length + 15, 0)
         layout.itemSize = CGSizeMake(width, height)
-        layout.minimumLineSpacing = 15
+        layout.minimumLineSpacing = 0
     }
 }
