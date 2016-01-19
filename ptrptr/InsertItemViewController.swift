@@ -23,6 +23,13 @@ class InsertItemViewController: QuickCollectionModal {
             self!.insertText()
         }
         
+        let emoji = QuickCollectionItem()
+        emoji.label = NSLocalizedString("Emoji", comment: "")
+        emoji.action = {
+            [weak self] in
+            
+        }
+        
         let square = QuickCollectionItem()
         square.label = NSLocalizedString("Square", comment: "")
         square.action = {
@@ -70,6 +77,12 @@ class InsertItemViewController: QuickCollectionModal {
             [weak self] in
         }
         
+        let particle = QuickCollectionItem()
+        particle.label = NSLocalizedString("Particle FX", comment: "")
+        particle.action = {
+            [weak self] in
+        }
+        
         let sketch = QuickCollectionItem()
         sketch.label = NSLocalizedString("Sketch", comment: "")
         sketch.action = {
@@ -77,7 +90,7 @@ class InsertItemViewController: QuickCollectionModal {
             self!.parent.startDrawing()
         }
         
-        items = [text, square, circle, image, link, page, counter, sketch]
+        items = [text, square, circle, image, link, page, counter, sketch, emoji, particle]
     }
     
     func insertText() {
@@ -88,7 +101,6 @@ class InsertItemViewController: QuickCollectionModal {
         json["x"] = center.x
         json["y"] = center.y
         json["width"] = 250
-        json["height"] = 160
         let shapeFirebase = parent.canvas.childByAppendingPath("shapes").childByAutoId()
         parent.canvasView!.selectionIDs = [shapeFirebase.lastPathComponent]
         parent.transactionStack.doTransaction(CMTransaction(target: nil, action: { (_) -> Void in

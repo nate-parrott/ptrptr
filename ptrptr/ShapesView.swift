@@ -23,6 +23,7 @@ class ShapesView: UIView {
                     _viewsByID[id]?.removeFromSuperview()
                     _viewsByID[id] = view
                     addSubview(view)
+                    view._shapesView = self
                 } else {
                     bringSubviewToFront(view)
                 }

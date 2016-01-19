@@ -31,6 +31,7 @@
         angle += M_PI / 2;
         [self addSubview:v];
     }
+    self.userInteractionEnabled = NO;
     
     return self;
 }

@@ -15,9 +15,9 @@ struct Shapes {
         var view: ShapeView!
         switch type {
         case "path":
-            view = renderPath(shape, existingView: view, ctx: ctx)
+            view = renderPath(shape, existingView: existingView, ctx: ctx)
         case "text":
-            view = renderText(shape, existingView: view, ctx: ctx)
+            view = renderText(shape, existingView: existingView, ctx: ctx)
         default:
             view = renderBase(shape, existingView: existingView, ctx: ctx)
         }
@@ -100,10 +100,8 @@ struct Shapes {
             color = ctx.colorFunc(colorArray)
         }
         
-        let attributed = NSAttributedString(string: text, attributes: [NSForegroundColorAttributeName: color])
         let w = shape["width"] as? CGFloat ?? 200
-        let h = shape["height"] as? CGFloat ?? 100
-        view.content = (attributed, CGSizeMake(w, h))
+        view.content = (text, color, w)
         
         return view
     }

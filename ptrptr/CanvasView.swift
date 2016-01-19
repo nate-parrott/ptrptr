@@ -98,7 +98,7 @@ class CanvasView: ShapesView, UIGestureRecognizerDelegate {
         for (view, indicator) in zip(views, _selectionIndicatorViews) {
             indicator.superview!.bringSubviewToFront(indicator)
             let (rotation, scale) = view.transformation
-            indicator.bounds = CGRectMake(0, 0, view.bounds.size.width * scale, view.bounds.size.width * scale)
+            indicator.bounds = CGRectMake(0, 0, view.bounds.size.width * scale, view.bounds.size.height * scale)
             indicator.transform = CGAffineTransformMakeRotation(rotation)
             indicator.center = view.center
         }

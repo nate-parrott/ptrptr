@@ -10,6 +10,10 @@ import UIKit
 
 class ShapeView: UIView {
     var _id: String!
+    weak var _shapesView: ShapesView!
+    var _canvasView: CanvasView? {
+        return _shapesView as? CanvasView
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

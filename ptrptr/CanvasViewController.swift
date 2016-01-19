@@ -20,6 +20,7 @@ class CanvasViewController: UIViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        automaticallyAdjustsScrollViewInsets = false
         toolbar.setBackgroundImage(UIImage(named: "Black"), forToolbarPosition: .Any, barMetrics: .Default)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "_transactionHappened:", name: CMTransactionStackDidExecuteTransactionNotification, object: transactionStack)
     }
