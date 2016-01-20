@@ -30,6 +30,7 @@ class CanvasViewController: UIViewController, CanvasViewDelegate {
             }
         }
     }
+    
     @IBOutlet var addButton: UIButton!
     
     override func viewWillAppear(animated: Bool) {

@@ -36,7 +36,7 @@ class CanvasView: ShapesView, UIGestureRecognizerDelegate {
     var _zoneViewLayer = CAShapeLayer()
     var _value: [String: AnyObject]? {
         didSet {
-            shapes = _value?["shapes"] as? [String: Shape] ?? [String: Shape]()
+            /*shapes = _value?["shapes"] as? [String: Shape] ?? [String: Shape]()
             
             let newSelection = Set(selectionIDs.filter({ shapes[$0] != nil }))
             if newSelection != selectionIDs {
@@ -49,7 +49,7 @@ class CanvasView: ShapesView, UIGestureRecognizerDelegate {
             
             if let v = _value, let ownerID = v["owner"] as? String, let uid = API.Shared.uid {
                 userIsOwner = (ownerID == uid)
-            }
+            }*/
         }
     }
     var userIsOwner: Bool!
@@ -78,7 +78,7 @@ class CanvasView: ShapesView, UIGestureRecognizerDelegate {
     }
     
     // MARK: Delegate
-    @IBOutlet var delegate: CanvasViewDelegate!
+    @IBOutlet weak var delegate: CanvasViewDelegate!
     
     // MARK: Selection
     var selectionIDs = Set<String>() {
