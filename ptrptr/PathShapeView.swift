@@ -36,19 +36,11 @@ class PathShapeView: ShapeView {
     
     func setPathsAndFrame(paths: [[CGFloat]], inCoordinateSpace: ShapesView.CoordinateSpace, offset: CGPoint) {
         // this layer will be scaled automatically to fit the space; we just need to set the correct center position
-        let bezier = UIBezierPath()
-        for path in paths {
-            for i in 0..<(path.count/2) {
-                let pt = CGPointMake(path[i*2], path[i*2+1])
-                if i == 0 {
-                    bezier.moveToPoint(pt)
-                } else {
-                    bezier.addLineToPoint(pt)
-                }
-            }
-        }
+        let bezier = PathShapeModel.bezierPathFromPathsArray(paths)
         let pathBounds = bezier.bounds
-        bezier.applyTransform(CGAffineTransformMakeTranslation(-pathBounds.origin.x, -pathBounds.origin.y))
+        if !isinf(pathBounds.origin.x) {
+            bezier.applyTransform(CGAffineTransformMakeTranslation(-pathBounds.origin.x, -pathBounds.origin.y))
+        }
         
         let cgPath = bezier.CGPath
         _strokeShapeView.shapeLayer.path = cgPath

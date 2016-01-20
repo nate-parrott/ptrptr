@@ -26,20 +26,12 @@ class TextShapeView: ShapeView, UITextViewDelegate {
         _textView.frame = bounds
     }
     
-    var content: (String, UIColor, CGFloat) = ("", UIColor.blackColor(), 100) {
+    var content: (String, UIFont, UIColor, CGFloat) = ("", UIFont.systemFontOfSize(30), UIColor.blackColor(), 100) {
         willSet(newVal) {
-            if !(newVal.0 == content.0 && newVal.1 == content.1 && newVal.2 == content.2) {
+            if !(newVal.0 == content.0 && newVal.1 == content.1 && newVal.2 == content.2 && newVal.3 == content.3) {
                 let selection = _textView.selectedRange
                 
-                /*let (string, size) = newVal
-                bounds = CGRectMake(0, 0, size.width, size.height)
-                let selection = _textView.selectedRange
-                _textView.attributedText = string.resizeToFitInside(size)
-                if _textView.selectedRange.location + _textView.selectedRange.length <= _textView.text.utf16.count {
-                    _textView.selectedRange = selection
-                }*/
-                let (string, color, maxWidth) = newVal
-                let font = UIFont.systemFontOfSize(30)
+                let (string, font, color, maxWidth) = newVal
                 let attributed = NSAttributedString(string: string, attributes: [NSFontAttributeName: font, NSForegroundColorAttributeName: color])
                 _textView.attributedText = attributed
                 let size = _textView.sizeThatFits(CGSizeMake(maxWidth, 99999))

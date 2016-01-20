@@ -27,14 +27,15 @@ class ShapesView: UIView {
                 let userColor = GetUserColor(user)
                 let renderCtx = RenderContext(coordinateSpace: coordinateSpace, colorFunc: CreateColorFunctionForUserColor(userColor), userColor: userColor)
                 
-                let view = ShapeModel.renderShape(id, shape: shape, existingView: existingOpt, ctx: renderCtx)
-                if view.superview !== self {
-                    _viewsByID[id]?.removeFromSuperview()
-                    _viewsByID[id] = view
-                    addSubview(view)
-                    view._shapesView = self
-                } else {
-                    bringSubviewToFront(view)
+                if let view = ShapeModel.renderShape(id, shape: shape, existingView: existingOpt, ctx: renderCtx) {
+                    if view.superview !== self {
+                        _viewsByID[id]?.removeFromSuperview()
+                        _viewsByID[id] = view
+                        addSubview(view)
+                        view._shapesView = self
+                    } else {
+                        bringSubviewToFront(view)
+                    }
                 }
             } else {
                 print("Shape with no user!") // TODO: remove? too much logging?
@@ -139,5 +140,12 @@ class ShapesView: UIView {
         let coordinateSpace: CoordinateSpace
         let colorFunc: [CGFloat] -> UIColor // parses and enforces color constraints
         let userColor: UIColor
+        
+        func overlapsBoundingCircle(circle: (center: CGPoint, radius: CGFloat)) -> Bool {
+            let radius = circle.radius
+            let center = circle.center
+            let rect = CGRectMake(center.x - radius, center.y - radius, radius * 2, radius * 2)
+            return CGRectIntersectsRect(coordinateSpace.convertRect(rect, toCoordinateSpace: coordinateSpace.view), coordinateSpace.view.bounds)
+        }
     }
 }

@@ -35,10 +35,15 @@ class ShapeModel {
             default: return self
         }
     }
-    class func renderShape(id: String, shape: Shape, existingView: ShapeView?, ctx: ShapesView.RenderContext) -> ShapeView {
+    class func renderShape(id: String, shape: Shape, existingView: ShapeView?, ctx: ShapesView.RenderContext) -> ShapeView? {
         let type = shape["type"] as? String ?? ""
         let model = classForType(type).init(data: shape, id: id)
-        return model.renderToView(existingView, context: ctx)
+        if ctx.overlapsBoundingCircle(model.computeBoundingCircle()) {
+            return model.renderToView(existingView, context: ctx)
+        } else {
+            // print("skipping \(type)")
+            return nil
+        }
     }
     class func convertShapeDictToArray(shapes: [String: Shape]) -> [(String, Shape)] {
         return shapes.map({ $0 }).sort({ (pair1, pair2) -> Bool in
@@ -47,6 +52,10 @@ class ShapeModel {
             return z1 < z2
         })
     }
+    func computeBoundingCircle() -> (center: CGPoint, radius: CGFloat) {
+        let center = CGPointMake(data["x"] as? CGFloat ?? 0, data["y"] as? CGFloat ?? 0)
+        return (center: center, radius: 0)
+    }
 }
 
 class PathShapeModel: ShapeModel {
@@ -54,14 +63,7 @@ class PathShapeModel: ShapeModel {
         var view = (existing as? PathShapeView) ?? PathShapeView()
         view = super.renderToView(view, context: context) as! PathShapeView
         
-        var paths = [[CGFloat]]()
-        if let pathArrays = data["paths"] as? [AnyObject] {
-            for pathArray in pathArrays {
-                if let points = pathArray as? [CGFloat] {
-                    paths.append(points)
-                }
-            }
-        }
+        let paths = getPathsArray()
         let offset = CGPointMake(data["x"] as? CGFloat ?? 0, data["y"] as? CGFloat ?? 0)
         view.setPathsAndFrame(paths, inCoordinateSpace: context.coordinateSpace, offset: offset)
         
@@ -101,6 +103,40 @@ class PathShapeModel: ShapeModel {
         
         return view
     }
+    func getPathsArray() -> [[CGFloat]] {
+        var paths = [[CGFloat]]()
+        if let pathArrays = data["paths"] as? [AnyObject] {
+            for pathArray in pathArrays {
+                if let points = pathArray as? [CGFloat] {
+                    paths.append(points)
+                }
+            }
+        }
+        return paths
+    }
+    class func bezierPathFromPathsArray(paths: [[CGFloat]]) -> UIBezierPath {
+        let bezier = UIBezierPath()
+        for path in paths {
+            for i in 0..<(path.count/2) {
+                let pt = CGPointMake(path[i*2], path[i*2+1])
+                if i == 0 {
+                    bezier.moveToPoint(pt)
+                } else {
+                    bezier.addLineToPoint(pt)
+                }
+            }
+        }
+        return bezier
+    }
+    override func computeBoundingCircle() -> (center: CGPoint, radius: CGFloat) {
+        var circle = super.computeBoundingCircle()
+        let pathBounds = self.dynamicType.bezierPathFromPathsArray(getPathsArray()).bounds
+        if !isinf(pathBounds.origin.x) {
+            circle.center = circle.center + pathBounds.center
+            circle.radius = pathBounds.origin.distanceFrom(pathBounds.center)
+        }
+        return circle
+    }
 }
 
 class TextShapeModel: ShapeModel {
@@ -115,8 +151,20 @@ class TextShapeModel: ShapeModel {
         }
         
         let w = data["width"] as? CGFloat ?? 200
-        view.content = (text, color, w)
+        view.content = (text, getFont(), color, w)
         
         return view
+    }
+    func getFont() -> UIFont {
+        return UIFont.systemFontOfSize(30)
+    }
+    override func computeBoundingCircle() -> (center: CGPoint, radius: CGFloat) {
+        var circle = super.computeBoundingCircle()
+        let text = data["text"] as? String ?? ""
+        let attributedText = NSAttributedString(string: text, attributes: [NSFontAttributeName: getFont()])
+        let width = data["width"] as? CGFloat ?? 200
+        let height = attributedText.boundingRectWithSize(CGSizeMake(width, 99999), options: [.UsesLineFragmentOrigin], context: nil).size.height
+        circle.radius = max(width, height)/2
+        return circle
     }
 }
