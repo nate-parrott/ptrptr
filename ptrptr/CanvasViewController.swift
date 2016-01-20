@@ -82,11 +82,17 @@ class CanvasViewController: UIViewController, CanvasViewDelegate {
         }
     }
     
+    func canvasViewInitialLoadCompleted(view: CanvasView) {
+        
+    }
+    
     // MARK: Actions
     @IBAction func insertShape() {
-        let vc = InsertItemViewController()
-        vc.parent = self
-        presentViewController(vc, animated: true, completion: nil)
+        if let loaded = canvasView?.initialLoadCompleted where loaded {
+            let vc = InsertItemViewController()
+            vc.parent = self
+            presentViewController(vc, animated: true, completion: nil)
+        }
     }
     
     @IBOutlet var drawingModeBar: DrawingEditModeBar!

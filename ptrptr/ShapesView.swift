@@ -19,7 +19,7 @@ class ShapesView: UIView {
     
     var _viewsByID = [String: ShapeView]()
     func render() {
-        let shapes = Shapes.convertShapeDictToArray(self.shapes)
+        let shapes = ShapeModel.convertShapeDictToArray(self.shapes)
         for (id, shape) in shapes {
             if let user = shape["author"] as? User {
                 let existingOpt: ShapeView? = _viewsByID[id]
@@ -27,7 +27,7 @@ class ShapesView: UIView {
                 let userColor = GetUserColor(user)
                 let renderCtx = RenderContext(coordinateSpace: coordinateSpace, colorFunc: CreateColorFunctionForUserColor(userColor), userColor: userColor)
                 
-                let view = Shapes.renderShape(id, shape: shape, existingView: existingOpt, ctx: renderCtx)
+                let view = ShapeModel.renderShape(id, shape: shape, existingView: existingOpt, ctx: renderCtx)
                 if view.superview !== self {
                     _viewsByID[id]?.removeFromSuperview()
                     _viewsByID[id] = view

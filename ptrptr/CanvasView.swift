@@ -11,6 +11,7 @@ import Firebase
 
 @objc protocol CanvasViewDelegate {
     func canvasView(view: CanvasView, selectionChanged: Set<String>)
+    func canvasViewInitialLoadCompleted(view: CanvasView)
 }
 
 class CanvasView: ShapesView, UIGestureRecognizerDelegate {
@@ -36,7 +37,7 @@ class CanvasView: ShapesView, UIGestureRecognizerDelegate {
     var _zoneViewLayer = CAShapeLayer()
     var _value: [String: AnyObject]? {
         didSet {
-            /*shapes = _value?["shapes"] as? [String: Shape] ?? [String: Shape]()
+            shapes = _value?["shapes"] as? [String: Shape] ?? [String: Shape]()
             
             let newSelection = Set(selectionIDs.filter({ shapes[$0] != nil }))
             if newSelection != selectionIDs {
@@ -49,10 +50,16 @@ class CanvasView: ShapesView, UIGestureRecognizerDelegate {
             
             if let v = _value, let ownerID = v["owner"] as? String, let uid = API.Shared.uid {
                 userIsOwner = (ownerID == uid)
-            }*/
+            }
+            
+            if _value != nil && !initialLoadCompleted {
+                initialLoadCompleted = true
+                delegate.canvasViewInitialLoadCompleted(self)
+            }
         }
     }
-    var userIsOwner: Bool!
+    private(set) var userIsOwner: Bool!
+    private(set) var initialLoadCompleted = false
     
     // MARK: Rendering
     override func render() {
