@@ -80,6 +80,14 @@ extension CGPoint {
     }
 }
 
+func *(lhs: CGSize, rhs: CGFloat) -> CGSize {
+    return CGSizeMake(lhs.width * rhs, lhs.height * rhs)
+}
+
+func *(lhs: CGFloat, rhs: CGSize) -> CGSize {
+    return rhs * lhs
+}
+
 func ==(lhs: CGRect, rhs: CGRect) -> Bool {
     return lhs.origin == rhs.origin && lhs.size == rhs.size
 }
