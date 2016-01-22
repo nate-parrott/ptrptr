@@ -59,11 +59,12 @@ class API: NSObject {
     let _servicesURL = "https://surfboard-services.appspot.com"
     
     func uploadAsset(data: NSData, contentType: String, callback: (url: NSURL?, error: NSError?) -> ()) {
-        let urlComps = NSURLComponents(string: _servicesURL)!
+        let urlComps = NSURLComponents(string: _servicesURL + "/raw_upload")!
         urlComps.queryItems = [NSURLQueryItem(name: "content_type", value: contentType)]
         let req = NSMutableURLRequest(URL: urlComps.URL!)
         req.HTTPMethod = "POST"
         req.HTTPBody = data
+        req.setValue(contentType, forHTTPHeaderField: "Content-Type")
         let task = NSURLSession.sharedSession().dataTaskWithRequest(req) { (dataOpt, responseOpt, errorOpt) -> Void in
             if let data = dataOpt,
                 response = try? NSJSONSerialization.JSONObjectWithData(data, options: []),
@@ -77,6 +78,16 @@ class API: NSObject {
         }
         task.resume()
     }
+    
+    func mirrorURLForImage(url: String, width: CGFloat) -> NSURL {
+        let comps = NSURLComponents(string: _servicesURL + "/mirror")!
+        let w = Int(width)
+        let h = w * 3
+        comps.queryItems = [NSURLQueryItem(name: "url", value: url), NSURLQueryItem(name: "resize", value: "\(w),\(h)")]
+        return comps.URL!
+    }
+    
+    let MaxImageSize: CGFloat = 1000
     
     // MARK: Onboarding
     func checkIfOnboardingComplete(callback: (result: Bool?) -> ()) {

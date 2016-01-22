@@ -43,6 +43,7 @@
 		5FD3F25B1C5080A600DD3042 /* CanvasViewController+InsertMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD3F25A1C5080A600DD3042 /* CanvasViewController+InsertMedia.swift */; };
 		5FD3F25D1C5080C200DD3042 /* MediaCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD3F25C1C5080C200DD3042 /* MediaCache.swift */; };
 		5FD3F25F1C5086A900DD3042 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD3F25E1C5086A900DD3042 /* UIImage+Resize.swift */; };
+		5FD3F2611C517D0200DD3042 /* UIImageExtras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD3F2601C517D0200DD3042 /* UIImageExtras.swift */; };
 		5FE7D29E1C4CEC6500DE424A /* ShapesView+HitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7D29D1C4CEC6500DE424A /* ShapesView+HitTest.swift */; };
 		5FE7D2A01C4D932B00DE424A /* CanvasView+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7D29F1C4D932B00DE424A /* CanvasView+Gestures.swift */; };
 		5FE7D2A21C4DAF9A00DE424A /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7D2A11C4DAF9A00DE424A /* FirebaseUtils.swift */; };
@@ -99,6 +100,7 @@
 		5FD3F25A1C5080A600DD3042 /* CanvasViewController+InsertMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CanvasViewController+InsertMedia.swift"; sourceTree = "<group>"; };
 		5FD3F25C1C5080C200DD3042 /* MediaCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCache.swift; sourceTree = "<group>"; };
 		5FD3F25E1C5086A900DD3042 /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
+		5FD3F2601C517D0200DD3042 /* UIImageExtras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtras.swift; sourceTree = "<group>"; };
 		5FE7D29D1C4CEC6500DE424A /* ShapesView+HitTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShapesView+HitTest.swift"; sourceTree = "<group>"; };
 		5FE7D29F1C4D932B00DE424A /* CanvasView+Gestures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CanvasView+Gestures.swift"; sourceTree = "<group>"; };
 		5FE7D2A11C4DAF9A00DE424A /* FirebaseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				5FD3F25E1C5086A900DD3042 /* UIImage+Resize.swift */,
 				5F1582201C4B615F009CC42E /* RGB-HSV.h */,
 				5F1582211C4B615F009CC42E /* RGB-HSV.c */,
+				5FD3F2601C517D0200DD3042 /* UIImageExtras.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				5F1582261C4B8934009CC42E /* ViewCollection.swift in Sources */,
 				5F1582191C4B5C80009CC42E /* InsertItemViewController.swift in Sources */,
 				5FD3F25F1C5086A900DD3042 /* UIImage+Resize.swift in Sources */,
+				5FD3F2611C517D0200DD3042 /* UIImageExtras.swift in Sources */,
 				5F8001881C47579D00183BA4 /* ShapeView.swift in Sources */,
 				5F1582321C4C9EF6009CC42E /* CMTransaction.m in Sources */,
 				5F1582121C4B4FF8009CC42E /* NetImageView.swift in Sources */,

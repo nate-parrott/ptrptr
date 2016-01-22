@@ -55,9 +55,10 @@ class PathShapeView: ShapeView {
         case Color(UIColor)
         case Image(UIImage)
         case ImageURL(NSURL)
+        case DynamicImage(NSURL?, CGSize, String) // url, size, id
     }
     
-    var fill: Fill? {
+    var fill: Fill? { // set geometry (path, scale, etc) FIRST for efficient image loading
         willSet(newVal) {
             if newVal != fill {
                 // update fill:
@@ -69,19 +70,47 @@ class PathShapeView: ShapeView {
                     case .Color(let color):
                         shapeFillColor = color
                     case .Image(let image):
-                        let imageView = _fillView as? NetImageView ?? NetImageView()
+                        let imageView = _fillView as? UIImageView ?? UIImageView()
                         imageView.image = image
                         fillView = imageView
                     case .ImageURL(let url):
                         let imageView = _fillView as? NetImageView ?? NetImageView()
                         imageView.url = url
                         fillView = imageView
+                    case .DynamicImage(let urlOpt, let size, let id):
+                        let imageView = _fillView as? UIImageView ?? UIImageView()
+                        var width = size.width
+                        if let res = _approximateResolutionWidthForImageFills() where res > 0 {
+                            width = res
+                        }
+                        let sizedUrl: NSURL? = urlOpt != nil ? API.Shared.mirrorURLForImage(urlOpt!.absoluteString, width: width) : nil
+                        if let image = MediaCache.Shared.getImage(id, preferredWidth: width, fetchURL: sizedUrl) {
+                            print("\(image.size.width)")
+                            imageView.image = image
+                            imageView.backgroundColor = nil
+                        } else {
+                            imageView.backgroundColor = UIColor.grayColor()
+                        }
+                        fillView = imageView
                     }
                 }
                 
-                _strokeShapeView.shapeLayer.fillColor = shapeFillColor?.CGColor
+                if fillView != nil {
+                    _strokeShapeView.shapeLayer.fillColor = UIColor.blackColor().CGColor
+                } else {
+                    _strokeShapeView.shapeLayer.fillColor = shapeFillColor?.CGColor
+                }
                 _fillView = fillView
             }
+        }
+    }
+    
+    func _approximateResolutionWidthForImageFills() -> CGFloat? {
+        if let path = _strokeShapeView.shapeLayer.path {
+            let width = CGPathGetBoundingBox(path).size.width
+            return width * transformation.scale * UIScreen.mainScreen().scale
+        } else {
+            return nil
         }
     }
     

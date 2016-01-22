@@ -9,7 +9,9 @@
 import UIKit
 
 class MediaCache {
-    let Shared = MediaCache()
+    static let Shared = MediaCache()
+    
+    static let MediaCacheDidLoadMediaNotification = "MediaCacheDidLoadMediaNotification"
     
     var _ids = [String: [_Item]]()
     class _Item {
@@ -42,7 +44,7 @@ class MediaCache {
                 _storeItem(newItem, id: id)
                 return newItem.image
             } else {
-                // start a fetch:
+                // too small -- start a fetch for a bigger version and the return the small one for now:
                 _ensureFetching(id, width: preferredWidth, url: fetchURL)
                 match.lastAccess = CFAbsoluteTimeGetCurrent()
                 return match.image
@@ -61,6 +63,7 @@ class MediaCache {
     var _fetchesInProgressAtSizesById = [String: _FetchTask]()
     func _ensureFetching(id: String, width: CGFloat, url url_: NSURL?) {
         if let url = url_ {
+            print("\(id): fetching \(url.absoluteString)")
             let task = _fetchesInProgressAtSizesById[id] ?? _FetchTask()
             task.lastAccess = CFAbsoluteTimeGetCurrent()
             _fetchesInProgressAtSizesById[id] = task
@@ -70,16 +73,17 @@ class MediaCache {
                 task.width = width
                 task.task = NSURLSession.sharedSession().dataTaskWithRequest(NSURLRequest(URL: url), completionHandler: { [weak self] (let dataOpt, let responseOpt, let errorOpt) -> Void in
                         if let data = dataOpt, let image = UIImage(data: data) {
+                            print("\(id): Got image at size \(image.size)")
                             let item = _Item()
                             item.lastAccess = CFAbsoluteTimeGetCurrent()
                             item.image = image
                             self!._storeItem(item, id: id)
                         }
                         self!._fetchesInProgressAtSizesById.removeValueForKey(id)
+                        NSNotificationCenter.defaultCenter().postNotificationName(MediaCache.MediaCacheDidLoadMediaNotification, object: self)
                     })
                 task.task.resume()
                 task.lastAccess = CFAbsoluteTimeGetCurrent()
-                _fetchesInProgressAtSizesById[id] = task
             }
         }
     }

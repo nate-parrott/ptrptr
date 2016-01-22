@@ -23,7 +23,7 @@ class CanvasViewController: UIViewController, CanvasViewDelegate {
         automaticallyAdjustsScrollViewInsets = false
         toolbar.setBackgroundImage(UIImage(named: "Black"), forToolbarPosition: .Any, barMetrics: .Default)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "_transactionHappened:", name: CMTransactionStackDidExecuteTransactionNotification, object: transactionStack)
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "_mediaCacheUpdated:", name: MediaCache.MediaCacheDidLoadMediaNotification, object: MediaCache.Shared)
         API.Shared.userPath!.childByAppendingPath("color").observeSingleEventOfType(.Value) { [weak self] (let snapshotOpt: FDataSnapshot?) -> Void in
             if let color = snapshotOpt?.value as? [CGFloat] where color.count == 4 {
                 self?.addButton.backgroundColor = UIColor(red: color[0], green: color[1], blue: color[2], alpha: color[3])
@@ -44,6 +44,13 @@ class CanvasViewController: UIViewController, CanvasViewDelegate {
     
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        delay(MediaCache.Shared._maxImageAge + 1) { () -> () in
+            MediaCache.Shared.deleteStaleImages()
+        }
     }
     
     // MARK: Views
@@ -178,5 +185,10 @@ class CanvasViewController: UIViewController, CanvasViewDelegate {
         var stack = _editModeBarStack
         stack.removeLast()
         _editModeBarStack = stack
+    }
+    
+    // MARK: Misc.
+    func _mediaCacheUpdated(notif: NSNotification) {
+        canvasView?._needsRender = true
     }
 }

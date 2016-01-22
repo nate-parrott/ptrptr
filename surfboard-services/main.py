@@ -25,10 +25,10 @@ class MainHandler(webapp2.RequestHandler):
 				self.response.write('Hello world!')
 
 class RawUploadHandler(webapp2.RequestHandler):
-    def post(self):
-        content_type = self.request.get('content-type')
-        data = self.request.body
-        url = upload_file_and_get_url(self.request.body, mimetype=self.request.get('content-type'))
+	def post(self):
+		content_type = self.request.get('content-type')
+		data = self.request.body
+		url = upload_file_and_get_url(self.request.body, mimetype=self.request.get('content-type'))
 		self.response.headers['Content-Type'] = 'application/json'
 		self.response.write(json.dumps({"url": url}))
 
@@ -87,6 +87,6 @@ class MirrorHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
 		('/', MainHandler),
 		('/upload', UploadHandler),
-        ('/raw_upload', RawUploadHandler),
+		('/raw_upload', RawUploadHandler),
 		('/mirror', MirrorHandler)
 ], debug=True)

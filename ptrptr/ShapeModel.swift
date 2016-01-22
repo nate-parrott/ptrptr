@@ -85,15 +85,22 @@ class PathShapeModel: ShapeModel {
                     fill = PathShapeView.Fill.Color(context.colorFunc(colorArray))
                 }
             case "image":
-                if let urlString = fillDict["url"] as? String, url = NSURL(string: urlString) {
-                    fill = PathShapeView.Fill.ImageURL(url)
+                if  let width = fillDict["width"] as? CGFloat,
+                    let height = fillDict["height"] as? CGFloat,
+                    let id = fillDict["id"] as? String {
+                        var url: NSURL?
+                        if let urlString = fillDict["url"] as? String,
+                            let url_ = NSURL(string: urlString) {
+                                url = url_
+                        }
+                        fill = PathShapeView.Fill.DynamicImage(url, CGSizeMake(width, height), id)
                 }
                 // images need a border
                 if strokeColor == nil {
                     strokeColor = context.userColor
                 }
                 if strokeWidth == 0 {
-                    strokeWidth = 2
+                    strokeWidth = 3
                 }
             default: ()
             }
@@ -117,10 +124,15 @@ class PathShapeModel: ShapeModel {
     class func bezierPathFromPathsArray(paths: [[CGFloat]]) -> UIBezierPath {
         let bezier = UIBezierPath()
         for path in paths {
+            var firstPoint: CGPoint?
             for i in 0..<(path.count/2) {
                 let pt = CGPointMake(path[i*2], path[i*2+1])
                 if i == 0 {
+                    firstPoint = pt
                     bezier.moveToPoint(pt)
+                } else if i + 1 == path.count/2 && pt == firstPoint {
+                    // last point is same as first point
+                    bezier.closePath()
                 } else {
                     bezier.addLineToPoint(pt)
                 }

@@ -19,6 +19,7 @@ class ShapesView: UIView {
     
     var _viewsByID = [String: ShapeView]()
     func render() {
+        MediaCache.Shared.deleteStaleImages()
         let shapes = ShapeModel.convertShapeDictToArray(self.shapes)
         for (id, shape) in shapes {
             if let user = shape["author"] as? User {

@@ -56,7 +56,7 @@ class InsertItemViewController: QuickCollectionModal {
         image.label = NSLocalizedString("Image", comment: "")
         image.action = {
             [weak self] in
-            
+            self!.parent.insertMedia()
         }
         
         let link = QuickCollectionItem()
