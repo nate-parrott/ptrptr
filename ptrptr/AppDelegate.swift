@@ -20,8 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //API.Shared.firebaseRoot.unauth()
         //return true
+        _resubscribeToFirebaseAuthEvents()
         
-        API.Shared.firebaseRoot.observeAuthEventWithBlock { (authData: FAuthData?) -> Void in
+        return true
+    }
+    
+    var _firebaseAuthEventHandle: UInt?
+    func _resubscribeToFirebaseAuthEvents() {
+        if let handle = _firebaseAuthEventHandle {
+            API.Shared.firebaseRoot.removeAuthEventObserverWithHandle(handle)
+        }
+        _firebaseAuthEventHandle = API.Shared.firebaseRoot.observeAuthEventWithBlock { (authData: FAuthData?) -> Void in
+            API.Shared._authUpdated()
             if authData == nil {
                 let existingLoginDialogOpt = (self.window?.rootViewController as? LoginViewController)
                 let loginWindowAlreadyPresented = (existingLoginDialogOpt != nil)
@@ -33,6 +43,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController")
                     self.window!.rootViewController = loginVC
+                    
+                    delay(0.5, closure: { () -> () in
+                        self._resubscribeToFirebaseAuthEvents()
+                    })
                 }
             } else {
                 // we're logged in:
@@ -42,8 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
-        
-        return true
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {

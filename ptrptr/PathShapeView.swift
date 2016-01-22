@@ -85,7 +85,7 @@ class PathShapeView: ShapeView {
                         }
                         let sizedUrl: NSURL? = urlOpt != nil ? API.Shared.mirrorURLForImage(urlOpt!.absoluteString, width: width) : nil
                         if let image = MediaCache.Shared.getImage(id, preferredWidth: width, fetchURL: sizedUrl) {
-                            print("\(image.size.width)")
+                            // print("\(image.size.width)")
                             imageView.image = image
                             imageView.backgroundColor = nil
                         } else {

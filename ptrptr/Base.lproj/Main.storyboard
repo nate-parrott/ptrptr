@@ -91,9 +91,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.27450980390000002" green="0.87450980389999999" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.13280618190765381" green="1" blue="0.61570286750793457" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -130,7 +130,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="ptrptr 🐾" id="q13-Xk-CMe">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Hev-eb-bv6"/>
+                        <barButtonItem key="leftBarButtonItem" image="Gear" id="3Tp-K5-6QY">
+                            <connections>
+                                <action selector="showOnboarding" destination="SDa-zw-nht" id="13h-gI-mGa"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="Add" id="SO9-aV-I3c"/>
                     </navigationItem>
                     <connections>
                         <outlet property="collection" destination="rs2-D7-k7R" id="Xcn-RP-hAq"/>
@@ -313,6 +318,17 @@
                                 <rect key="frame" x="0.0" y="440" width="320" height="128"/>
                                 <color key="backgroundColor" red="0.67936027486910988" green="0.67936027486910988" blue="0.67936027486910988" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJb-o5-Bmv">
+                                <rect key="frame" x="1" y="20" width="77" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="77" id="L7K-tg-IYD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="sign out"/>
+                                <connections>
+                                    <action selector="logOut" destination="bPB-Qq-skM" eventType="touchUpInside" id="FxQ-BP-xov"/>
+                                </connections>
+                            </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="DHz-yB-qgX">
                                 <rect key="frame" x="150" y="274" width="20" height="20"/>
                             </activityIndicatorView>
@@ -333,11 +349,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zJb-o5-Bmv" firstAttribute="top" secondItem="mVt-Jd-Zcq" secondAttribute="bottom" id="2QF-PX-hCZ"/>
                             <constraint firstItem="NHP-Um-xz5" firstAttribute="leading" secondItem="TyN-r0-Xvt" secondAttribute="leading" id="2pe-3a-zkj"/>
                             <constraint firstItem="DHz-yB-qgX" firstAttribute="centerY" secondItem="TyN-r0-Xvt" secondAttribute="centerY" id="2rB-Nl-FLV"/>
                             <constraint firstAttribute="trailing" secondItem="Ih9-MQ-2WI" secondAttribute="trailing" id="4Bc-KP-OvI"/>
                             <constraint firstItem="Ffk-ac-eAn" firstAttribute="leading" secondItem="TyN-r0-Xvt" secondAttribute="leading" id="87q-oU-Xtw"/>
                             <constraint firstItem="DHz-yB-qgX" firstAttribute="centerX" secondItem="TyN-r0-Xvt" secondAttribute="centerX" id="DFt-g2-Hbe"/>
+                            <constraint firstItem="zJb-o5-Bmv" firstAttribute="leading" secondItem="TyN-r0-Xvt" secondAttribute="leading" constant="1" id="GNd-lE-ONw"/>
                             <constraint firstItem="88n-yM-rRX" firstAttribute="top" secondItem="Ih9-MQ-2WI" secondAttribute="bottom" id="HWB-KV-vye"/>
                             <constraint firstItem="Ih9-MQ-2WI" firstAttribute="leading" secondItem="TyN-r0-Xvt" secondAttribute="leading" id="Q56-M2-H9e"/>
                             <constraint firstItem="Ffk-ac-eAn" firstAttribute="top" secondItem="NHP-Um-xz5" secondAttribute="bottom" id="R9D-Ka-UaS"/>
@@ -361,6 +379,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Add" width="16" height="17"/>
         <image name="Back" width="27" height="22"/>
+        <image name="Gear" width="19" height="19"/>
     </resources>
 </document>

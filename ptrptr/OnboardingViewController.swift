@@ -107,4 +107,10 @@ class OnboardingViewController: UIViewController {
             return API.Shared.firebaseRoot.childByAppendingPath("users").childByAppendingPath(API.Shared.firebaseRoot.authData.uid)
         }
     }
+    @IBAction func logOut() {
+        dismissViewControllerAnimated(true) { () -> Void in
+            API.Shared.firebaseRoot.unauth()
+            FBSDKLoginManager().logOut()
+        }
+    }
 }

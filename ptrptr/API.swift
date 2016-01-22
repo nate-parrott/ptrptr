@@ -17,9 +17,6 @@ class API: NSObject {
     
     override init() {
         super.init()
-        firebaseRoot.observeAuthEventWithBlock { [weak self] (let authOpt: FAuthData?) -> Void in
-            self!.userPath = authOpt == nil ? nil : self!.firebaseRoot.childByAppendingPath("users").childByAppendingPath(authOpt!.uid)
-        }
     }
     
     let firebaseRoot = Firebase(url: "https://ptrptr.firebaseio.com")
@@ -53,6 +50,12 @@ class API: NSObject {
         get {
             return firebaseRoot.authData?.uid
         }
+    }
+    
+    func _authUpdated() {
+        // called in AppDelegate, not subscribed here, for reasons explained there
+        let authOpt = firebaseRoot.authData
+        userPath = authOpt == nil ? nil : firebaseRoot.childByAppendingPath("users").childByAppendingPath(uid)
     }
     
     // MARK: Assets

@@ -20,7 +20,7 @@ class FeedViewController: UIViewController {
         API.Shared.checkIfOnboardingComplete { (resultOpt) -> () in
             if let result = resultOpt {
                 if !result {
-                    self.presentViewController(self.storyboard!.instantiateViewControllerWithIdentifier("OnboardingViewController"), animated: true, completion: nil)
+                    self.showOnboarding()
                 }
             }
         }
@@ -69,6 +69,10 @@ class FeedViewController: UIViewController {
         let canvasVC = storyboard!.instantiateViewControllerWithIdentifier("CanvasViewController") as! CanvasViewController
         canvasVC.canvas = API.Shared.firebaseRoot.childByAppendingPath("profiles").childByAppendingPath(id)
         navigationController!.pushViewController(canvasVC, animated: true)
+    }
+    
+    @IBAction func showOnboarding() {
+        self.presentViewController(self.storyboard!.instantiateViewControllerWithIdentifier("OnboardingViewController"), animated: true, completion: nil)
     }
     
     // MARK: Appearance
